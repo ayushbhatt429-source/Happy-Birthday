@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday My Love</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -13,7 +13,7 @@
             padding: 0;
             background: radial-gradient(circle at center, #fff0f5 0%, #ffd1dc 100%);
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevents side-scrolling */
             scroll-behavior: smooth;
             color: #d81b60;
         }
@@ -41,6 +41,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 105, 135, 0.2);
+            -webkit-tap-highlight-color: transparent; /* Removes blue tap box on mobile */
         }
 
         .music-btn:hover {
@@ -68,6 +69,8 @@
             gap: 40px;
             width: 100%;
             max-width: 1200px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         /* Heart Photo Masks */
@@ -123,6 +126,7 @@
             margin-top: 60px;
             flex-wrap: wrap;
             justify-content: center;
+            padding: 0 15px;
         }
 
         .info-card {
@@ -135,6 +139,8 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
             transition: transform 0.3s ease;
+            flex: 1 1 200px; /* Allows cards to shrink and wrap gracefully */
+            max-width: 250px;
         }
 
         .info-card:hover { transform: translateY(-5px); }
@@ -147,9 +153,10 @@
             margin-top: 40px;
             font-weight: 600;
             animation: bounce 2s infinite;
+            text-align: center;
         }
 
-        /* SECTION 2: The Envelope */
+        /* SECTION 2: The Envelope (Mobile-Safe Sizing) */
         .envelope-section {
             height: 100vh;
             display: flex;
@@ -162,13 +169,14 @@
 
         .envelope-container {
             position: relative;
-            width: 320px;
-            height: 220px;
+            width: 300px; /* Shrunk slightly to guarantee it fits on all phones */
+            height: 200px;
             background: #e91e63;
             border-radius: 0 0 10px 10px;
             cursor: pointer;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .envelope-container:hover { transform: scale(1.02); }
@@ -179,9 +187,9 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            border-top: 130px solid #d81b60;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 120px solid #d81b60;
             transform-origin: top;
             transition: transform 0.8s ease, z-index 0.2s;
             z-index: 4;
@@ -200,10 +208,11 @@
             opacity: 0; 
             transition: transform 0.8s ease, opacity 0.8s ease;
             z-index: 3;
+            box-sizing: border-box;
         }
 
         .letter p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #333;
             margin: 0;
             font-weight: 400;
@@ -225,7 +234,7 @@
         }
 
         .envelope-container.open .letter {
-            transform: translateY(-120px);
+            transform: translateY(-110px);
             opacity: 1; 
             z-index: 5;
         }
@@ -234,7 +243,7 @@
 
         /* SECTION 3: Our Memories */
         .memories-section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 900px;
             margin: 0 auto;
             position: relative;
@@ -246,11 +255,10 @@
             font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             color: #c2185b;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             text-shadow: 2px 2px 5px rgba(194, 24, 91, 0.2);
         }
 
-        /* Memory Card Layout */
         .memory-card {
             display: flex;
             align-items: center;
@@ -259,19 +267,14 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 20px;
             padding: 25px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(255, 105, 135, 0.15);
             transition: transform 0.3s ease;
         }
 
-        .memory-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 105, 135, 0.25);
-        }
-
         .memory-img {
-            width: 250px;
-            height: 250px;
+            width: 220px;
+            height: 220px;
             flex-shrink: 0;
             background-color: #ffb6c1; 
             border-radius: 15px;
@@ -281,13 +284,13 @@
         }
 
         .memory-text {
-            padding-left: 40px;
+            padding-left: 30px;
             flex-grow: 1;
         }
 
         .memory-text h3 {
             color: #d81b60;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 0 0 10px 0;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -295,7 +298,7 @@
 
         .memory-text p {
             color: #444;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.6;
             margin: 0;
         }
@@ -314,32 +317,35 @@
 
         .modal-box {
             background: white;
-            padding: 40px;
+            padding: 30px 20px;
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            max-width: 300px;
+            max-width: 85%;
+            width: 320px;
         }
 
         .modal-box h2 {
             color: #c2185b;
             margin-top: 0;
+            font-size: 1.5rem;
         }
 
         .modal-btn {
             background: #e91e63;
             color: white;
             border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 20px;
+            padding: 12px 20px;
+            margin: 10px 5px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-family: 'Poppins', sans-serif;
             transition: 0.3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .modal-btn:hover { background: #c2185b; }
+        .modal-btn:hover, .modal-btn:active { background: #c2185b; }
 
         /* Animations */
         @keyframes float {
@@ -366,21 +372,40 @@
             100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
 
-        /* Mobile responsiveness */
-        @media (max-width: 800px) {
-            .center-display { flex-direction: column; gap: 20px; }
-            .photo-heart { width: 150px; height: 150px; }
-            h1 { font-size: 4rem; }
+        /* 📱 STRICT MOBILE RESPONSIVENESS OVERRIDES 📱 */
+        @media (max-width: 768px) {
+            /* Center the top bar on phones */
+            .top-bar { 
+                justify-content: center; 
+                padding: 15px; 
+            }
             
+            /* Stack the top hearts and text */
+            .center-display { 
+                flex-direction: column; 
+                gap: 20px; 
+                padding-top: 20px;
+            }
+            
+            /* Shrink main elements so they fit screen width */
+            .photo-heart { width: 160px; height: 160px; }
+            h1 { font-size: 3.5rem; }
+            .subtitle { font-size: 0.75rem; }
+            .main-desc { font-size: 0.95rem; padding: 0 10px; }
+            .memories-title { font-size: 3.2rem; margin-bottom: 30px; }
+            
+            /* Stack memory cards vertically */
             .memory-card {
                 flex-direction: column;
                 text-align: center;
-                padding: 20px;
+                padding: 20px 15px;
             }
+            .memory-img { width: 200px; height: 200px; }
             .memory-text {
                 padding-left: 0;
-                padding-top: 25px;
+                padding-top: 20px;
             }
+            .memory-text h3 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -577,7 +602,9 @@
         function openEnvelope() {
             modal.style.display = 'none';
             envelope.classList.add('open');
-            envelope.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                envelope.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300); // Slight delay for smoother mobile scrolling
         }
     </script>
 </body>
