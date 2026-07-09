@@ -84,11 +84,8 @@
             animation: float 4s ease-in-out infinite alternate;
         }
 
-        .photo-heart.right {
-            animation-delay: 1s; 
-        }
+        .photo-heart.right { animation-delay: 1s; }
 
-        /* Text Styling */
         .text-content {
             text-align: center;
             max-width: 500px;
@@ -141,18 +138,8 @@
         }
 
         .info-card:hover { transform: translateY(-5px); }
-
-        .info-card h3 {
-            margin: 10px 0 5px 0;
-            font-size: 1.1rem;
-            color: #c2185b;
-        }
-
-        .info-card p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: #666;
-        }
+        .info-card h3 { margin: 10px 0 5px 0; font-size: 1.1rem; color: #c2185b; }
+        .info-card p { margin: 0; font-size: 0.85rem; color: #666; }
 
         .scroll-text {
             color: #c2185b;
@@ -210,7 +197,6 @@
             border-radius: 5px;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            /* Hidden initially with opacity: 0 */
             opacity: 0; 
             transition: transform 0.8s ease, opacity 0.8s ease;
             z-index: 3;
@@ -240,12 +226,79 @@
 
         .envelope-container.open .letter {
             transform: translateY(-120px);
-            /* Fades in beautifully when opened */
             opacity: 1; 
             z-index: 5;
         }
 
         .envelope-container.open .click-instruction { opacity: 0; }
+
+        /* SECTION 3: Our Memories */
+        .memories-section {
+            padding: 100px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .memories-title {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #c2185b;
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 5px rgba(194, 24, 91, 0.2);
+        }
+
+        /* Memory Card Layout */
+        .memory-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(255, 105, 135, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 105, 135, 0.25);
+        }
+
+        .memory-img {
+            width: 250px;
+            height: 250px;
+            flex-shrink: 0;
+            background-color: #ffb6c1; /* Shows if image is missing */
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .memory-text {
+            padding-left: 40px;
+            flex-grow: 1;
+        }
+
+        .memory-text h3 {
+            color: #d81b60;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .memory-text p {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
 
         /* Custom Popup Modal */
         .modal-overlay {
@@ -300,7 +353,6 @@
             60% { transform: translateY(-5px); }
         }
         
-        /* Floating background hearts */
         .bg-heart {
             position: fixed;
             color: rgba(255, 182, 193, 0.6);
@@ -316,15 +368,20 @@
 
         /* Mobile responsiveness */
         @media (max-width: 800px) {
-            .center-display {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .photo-heart {
-                width: 150px;
-                height: 150px;
-            }
+            .center-display { flex-direction: column; gap: 20px; }
+            .photo-heart { width: 150px; height: 150px; }
             h1 { font-size: 4rem; }
+            
+            /* Stack memory cards vertically on phones */
+            .memory-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .memory-text {
+                padding-left: 0;
+                padding-top: 25px;
+            }
         }
     </style>
 </head>
@@ -386,6 +443,91 @@
             
             <div class="click-instruction">Click here to open the message</div>
         </div>
+    </div>
+
+    <div class="memories-section">
+        <h2 class="memories-title">Our Memories</h2>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory1.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 1</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture. It's the perfect place to write an inside joke or sweet note.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory2.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 2</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory3.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 3</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory4.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 4</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory5.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 5</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory6.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 6</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory7.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 7</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory8.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 8</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory9.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 9</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
+        <div class="memory-card">
+            <div class="memory-img" style="background-image: url('memory10.jpeg');"></div>
+            <div class="memory-text">
+                <h3>Title for Picture 10</h3>
+                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+            </div>
+        </div>
+
     </div>
 
     <div class="modal-overlay" id="questionModal">
