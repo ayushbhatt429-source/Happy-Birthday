@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday My Love</title>
-    <!-- Beautiful fonts to match the scrapbook aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500&display=swap" rel="stylesheet">
     
     <style>
@@ -22,7 +21,7 @@
         }
 
         /* ------------------------------------- */
-        /* INTRO SCREEN (Required for Autoplay)  */
+        /* INTRO SCREEN                          */
         /* ------------------------------------- */
         #intro-screen {
             position: fixed;
@@ -63,12 +62,8 @@
             user-select: none;
         }
 
-        .fixed-flower-1 {
-            position: fixed; top: -5%; left: -5%; font-size: 25vw; color: #c97a7e; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(15deg);
-        }
-        .fixed-flower-2 {
-            position: fixed; bottom: -5%; right: -5%; font-size: 20vw; color: #d4a373; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(-25deg);
-        }
+        .fixed-flower-1 { position: fixed; top: -5%; left: -5%; font-size: 25vw; color: #c97a7e; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(15deg); }
+        .fixed-flower-2 { position: fixed; bottom: -5%; right: -5%; font-size: 20vw; color: #d4a373; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(-25deg); }
 
         /* ------------------------------------- */
         /* ANIMATION CLASSES                     */
@@ -191,27 +186,9 @@
             margin-bottom: 0px;
         }
 
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            color: #6a4a3a;
-            font-size: 6rem;
-            margin: 0;
-            line-height: 1.1;
-        }
-
-        .my-love-text {
-            font-family: 'Great Vibes', cursive;
-            color: #c97a7e;
-            font-size: 4rem;
-            margin-top: -10px;
-        }
-
-        .main-desc {
-            color: #5c4a3d;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            font-weight: 400;
-        }
+        h1 { font-family: 'Great Vibes', cursive; color: #6a4a3a; font-size: 6rem; margin: 0; line-height: 1.1; }
+        .my-love-text { font-family: 'Great Vibes', cursive; color: #c97a7e; font-size: 4rem; margin-top: -10px; }
+        .main-desc { color: #5c4a3d; font-size: 1.1rem; margin-top: 20px; font-weight: 400; }
 
         /* ------------------------------------- */
         /* ENVELOPE SECTION                      */
@@ -228,8 +205,7 @@
 
         .envelope-container {
             position: relative;
-            width: 300px;
-            height: 200px;
+            width: 300px; height: 200px;
             background: #d4a373;
             border-radius: 0 0 10px 10px;
             cursor: pointer;
@@ -241,54 +217,26 @@
         .envelope-container:hover { transform: scale(1.02); }
 
         .flap {
-            position: absolute;
-            top: 0; left: 0; width: 0; height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 120px solid #e9bda5;
-            transform-origin: top;
-            transition: transform 0.8s ease, z-index 0.2s;
-            z-index: 4;
+            position: absolute; top: 0; left: 0; width: 0; height: 0;
+            border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 120px solid #e9bda5;
+            transform-origin: top; transition: transform 0.8s ease, z-index 0.2s; z-index: 4;
         }
 
         .letter {
-            position: absolute;
-            bottom: 10px; left: 15px; right: 15px;
-            background: #fffaf0;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            opacity: 0; 
-            transition: transform 0.8s ease, opacity 0.8s ease;
-            z-index: 3;
-            box-sizing: border-box;
-            color: #4a3b32;
+            position: absolute; bottom: 10px; left: 15px; right: 15px;
+            background: #fffaf0; padding: 20px; border-radius: 5px; text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); opacity: 0; transition: transform 0.8s ease, opacity 0.8s ease;
+            z-index: 3; box-sizing: border-box; color: #4a3b32;
         }
 
-        .envelope-instruction {
-            margin-top: 15px !important;
-            color: #c97a7e !important;
-            font-family: 'Caveat', cursive;
-            font-size: 1.5rem !important;
-        }
-
-        .click-instruction {
-            position: absolute;
-            bottom: -50px;
-            width: 100%;
-            text-align: center;
-            color: #8c6a58;
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-        }
-
+        .envelope-instruction { margin-top: 15px !important; color: #c97a7e !important; font-family: 'Caveat', cursive; font-size: 1.5rem !important; }
+        .click-instruction { position: absolute; bottom: -50px; width: 100%; text-align: center; color: #8c6a58; font-family: 'Caveat', cursive; font-size: 1.8rem; }
         .envelope-container.open .flap { transform: rotateX(180deg); z-index: 1; }
         .envelope-container.open .letter { transform: translateY(-130px); opacity: 1; z-index: 5; }
         .envelope-container.open .click-instruction { opacity: 0; }
 
         /* ------------------------------------- */
-        /* MEMORIES & GALLERY VIEWPORTS          */
+        /* INDIVIDUAL MEMORIES                   */
         /* ------------------------------------- */
         #memories-container { display: none; width: 100%; }
 
@@ -305,142 +253,124 @@
         }
 
         .memory-card {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 2px 5px 20px rgba(0,0,0,0.08);
-            max-width: 900px;
-            width: 100%;
-            position: relative;
-            z-index: 10;
+            display: flex; align-items: center; background: #fff; padding: 30px; border-radius: 5px;
+            box-shadow: 2px 5px 20px rgba(0,0,0,0.08); max-width: 900px; width: 100%; position: relative; z-index: 10;
         }
 
         .memory-img {
-            width: 280px; height: 280px;
-            flex-shrink: 0;
-            background-color: #e6d5c3; 
-            background-size: cover;
-            background-position: center top;
-            border: 8px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transform: rotate(-3deg);
+            width: 280px; height: 280px; flex-shrink: 0; background-color: #e6d5c3; 
+            background-size: cover; background-position: center top;
+            border: 8px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transform: rotate(-3deg);
         }
 
-        .memory-text {
-            padding-left: 50px;
-            flex-grow: 1;
-        }
-
-        .memory-text h3 {
-            color: #c97a7e;
-            font-size: 3.5rem;
-            margin: 0 0 10px 0;
-            font-family: 'Great Vibes', cursive;
-        }
-
-        .memory-text p {
-            color: #5c4a3d;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin: 0;
-        }
+        .memory-text { padding-left: 50px; flex-grow: 1; }
+        .memory-text h3 { color: #c97a7e; font-size: 3.5rem; margin: 0 0 10px 0; font-family: 'Great Vibes', cursive; }
+        .memory-text p { color: #5c4a3d; font-size: 1.1rem; line-height: 1.7; margin: 0; }
 
         /* ------------------------------------- */
         /* NEW GALLERY SECTIONS                  */
         /* ------------------------------------- */
         .gallery-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 2px 5px 20px rgba(0,0,0,0.08);
-            max-width: 1000px;
-            width: 100%;
+            background: #fffdfa; /* Warm paper white */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 2px 5px 25px rgba(0,0,0,0.08);
+            max-width: 1100px;
+            width: 95%;
             position: relative;
             z-index: 10;
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 90vh; /* Keeps it neatly inside the screen */
         }
 
-        .gallery-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: #c97a7e;
-            margin: 0 0 15px 0;
-            text-align: center;
-        }
-
+        .gallery-header { text-align: center; margin-bottom: 25px; }
+        .gallery-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #d27b7f; margin: 0; line-height: 1; }
+        .gallery-subtitle { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #8c6a58; margin-top: 10px; font-style: italic; }
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
+            gap: 20px;
             width: 100%;
-            overflow-y: auto; 
-            padding: 10px;
-            box-sizing: border-box;
         }
 
-        .gallery-img {
+        .photo-card {
+            position: relative;
+            /* 2-Second animation settings */
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            transition: opacity 2s ease, transform 2s ease;
+        }
+
+        .gallery-img-sq {
             width: 100%;
-            aspect-ratio: 1; /* Makes photos perfect squares */
+            aspect-ratio: 1; /* Makes them perfectly square */
             background-color: #e6d5c3;
             background-size: cover;
             background-position: center;
-            border: 5px solid #fff;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border-radius: 2px;
-            /* 2-Second animation */
-            opacity: 0;
-            transform: scale(0.8) translateY(20px);
-            transition: opacity 2s ease, transform 2s ease; 
+        }
+
+        .photo-badge {
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            background: #e5989b;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            border: 2px solid #fff;
+            z-index: 2;
+        }
+
+        /* The Special 15th Photo Design */
+        .special-card .gallery-img-sq {
+            border: 3px solid #d4af37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .special-card .photo-badge {
+            background: #d4af37;
+        }
+        
+        .crown-icon {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            font-size: 2rem;
+            transform: rotate(15deg);
+            z-index: 2;
+        }
+
+        .gallery-footer {
+            text-align: center;
+            margin-top: 35px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: #d27b7f;
+            line-height: 1.2;
         }
 
         /* ------------------------------------- */
         /* MODAL                                 */
         /* ------------------------------------- */
         .modal-overlay {
-            display: none; 
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(246, 239, 232, 0.9);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(246, 239, 232, 0.9); z-index: 100; justify-content: center; align-items: center;
         }
-
-        .modal-box {
-            background: #fff;
-            padding: 40px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 85%;
-            width: 320px;
-            border: 1px solid #e6d5c3;
-        }
-
-        .modal-box h2 {
-            color: #c97a7e;
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            margin-top: 0;
-        }
-
-        .modal-btn {
-            background: transparent;
-            color: #8c6a58;
-            border: 1px solid #8c6a58;
-            padding: 12px 20px;
-            margin: 10px 5px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: 'Playfair Display', serif;
-            transition: 0.3s;
-        }
-
+        .modal-box { background: #fff; padding: 40px; border-radius: 5px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 85%; width: 320px; border: 1px solid #e6d5c3; }
+        .modal-box h2 { color: #c97a7e; font-family: 'Great Vibes', cursive; font-size: 3rem; margin-top: 0; }
+        .modal-btn { background: transparent; color: #8c6a58; border: 1px solid #8c6a58; padding: 12px 20px; margin: 10px 5px; border-radius: 30px; cursor: pointer; font-size: 1rem; font-family: 'Playfair Display', serif; transition: 0.3s; }
         .modal-btn:hover { background: #8c6a58; color: #fff; }
 
         /* ------------------------------------- */
@@ -459,27 +389,29 @@
             .memory-text { padding-left: 0; padding-top: 25px; }
             .memory-text h3 { font-size: 2.8rem; }
 
-            /* Gallery adjustments for phone */
-            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-            .gallery-title { font-size: 3rem; }
-            .gallery-container { height: 92vh; padding: 15px; }
+            /* Gallery mobile overrides */
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 15px; }
+            .gallery-title { font-size: 3.5rem; }
+            .gallery-footer { font-size: 1.8rem; margin-top: 25px; }
+            .gallery-container { padding: 25px; }
+            .memory-viewport { height: auto; min-height: 100vh; padding: 40px 10px; } /* Allows gallery to scroll nicely on phone */
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fixed Background Flowers -->
     <div class="fixed-flower-1">✿</div>
     <div class="fixed-flower-2">❀</div>
 
-    <!-- Invisible trigger screen to bypass browser audio blocks -->
     <div id="intro-screen" onclick="startExperience()">
         <p class="tap-text">Tap anywhere to open your surprise ❤️</p>
     </div>
 
-    <!-- AUDIO FILES -->
     <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
-    <!-- 10 Individual Memory Songs -->
     <audio id="audio-memory1" class="memory-audio" loop><source src="song1.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory2" class="memory-audio" loop><source src="song2.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory3" class="memory-audio" loop><source src="song3.mp3" type="audio/mpeg"></audio>
@@ -490,37 +422,30 @@
     <audio id="audio-memory8" class="memory-audio" loop><source src="song8.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory9" class="memory-audio" loop><source src="song9.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory10" class="memory-audio" loop><source src="song10.mp3" type="audio/mpeg"></audio>
-    <!-- 2 New Gallery Songs -->
     <audio id="audio-mygallery" class="memory-audio" loop><source src="song_mygallery.mp3" type="audio/mpeg"></audio>
     <audio id="audio-ourgallery" class="memory-audio" loop><source src="song_ourgallery.mp3" type="audio/mpeg"></audio>
 
-    <!-- SECTION 1: Welcome Screen -->
     <div class="hero-section" id="hero">
         <div class="scrapbook-row">
-            
             <div class="photo-wrapper slow-image">
                 <div class="tape"></div>
                 <div class="photo-heart" style="background-image: url('photo1.jpeg'); background-position: center top; background-size: cover;"></div>
                 <span class="doodle-text doodle-1">You make<br>every day<br>brighter ♡</span>
             </div>
-            
             <div class="text-content">
                 <p class="subtitle letter-anim">— TO MY FAVORITE PERSON —</p>
                 <h1 class="letter-anim">Happy Birthday</h1>
                 <div class="my-love-text letter-anim">♡ my love ♡</div>
                 <p class="main-desc letter-anim">You make every day brighter. Wishing you endless happiness, love, and all the beautiful things in life.</p>
             </div>
-
             <div class="photo-wrapper right slow-image">
                 <div class="tape"></div>
                 <div class="photo-heart" style="background-image: url('photo2.jpeg'); background-position: center top; background-size: cover;"></div>
                 <span class="doodle-text doodle-2">So grateful<br>to have you<br>in my life ♡</span>
             </div>
-
         </div>
     </div>
 
-    <!-- SECTION 2: Interactive Envelope -->
     <div class="envelope-section hidden-element" id="envelope-sec">
         <div class="envelope-container" id="envelope" onclick="openModal()">
             <div class="flap"></div>
@@ -532,54 +457,20 @@
         </div>
     </div>
 
-    <!-- SECTION 3: 10 Memories & Galleries -->
     <div id="memories-container">
 
-        <!-- 10 Memories -->
         <div class="memory-viewport" data-audio="audio-memory1">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory1.jpeg');"></div>
-                <div class="memory-text">
-                    <h3 class="letter-anim">Your First Picture</h3>
-                    <p class="letter-anim">The moment I saw this picture, my heart skipped a beat. Your smile completely captivated me, and looking back, I realize this was the exact moment I started falling endlessly in love with you.</p>
-                </div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory1.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Your First Picture</h3><p class="letter-anim">The moment I saw this picture, my heart skipped a beat. Your smile completely captivated me, and looking back, I realize this was the exact moment I started falling endlessly in love with you.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory2">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory2.jpeg');"></div>
-                <div class="memory-text">
-                    <h3 class="letter-anim">Our first picture</h3>
-                    <p class="letter-anim">Looking at this brings back so many butterflies. This was the start of our beautiful journey together, and I wouldn't trade this memory for anything in the world.</p>
-                </div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory2.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Our first picture</h3><p class="letter-anim">Looking at this brings back so many butterflies. This was the start of our beautiful journey together, and I wouldn't trade this memory for anything in the world.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory3">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory3.jpeg');"></div>
-                <div class="memory-text">
-                    <h3 class="letter-anim">Our moment</h3>
-                    <p class="letter-anim">These moments can't be expressed through words. Just being there with you, lost in our own little world, is a feeling I will keep safe in my heart forever.</p>
-                </div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory3.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Our moment</h3><p class="letter-anim">These moments can't be expressed through words. Just being there with you, lost in our own little world, is a feeling I will keep safe in my heart forever.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory4">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory4.jpeg');"></div>
-                <div class="memory-text">
-                    <h3 class="letter-anim">My Birthday</h3>
-                    <p class="letter-anim">You made my birthday so incredibly special. All the love, effort, and tiny details you put into it showed me just how deeply you care. I am so lucky to have you by my side.</p>
-                </div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory4.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">My Birthday</h3><p class="letter-anim">You made my birthday so incredibly special. All the love, effort, and tiny details you put into it showed me just how deeply you care. I am so lucky to have you by my side.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory5">
             <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory5.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 5</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
@@ -599,59 +490,82 @@
             <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory10.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 10</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
 
-        <!-- NEW SECTION: My Gallery -->
         <div class="memory-viewport" data-audio="audio-mygallery">
             <div class="gallery-container hidden-element">
                 <div class="tape"></div>
-                <h2 class="gallery-title letter-anim">My Gallery</h2>
+                <div class="gallery-header letter-anim">
+                    <h2 class="gallery-title">My Gallery</h2>
+                    <p class="gallery-subtitle">♡ — 15 memories, countless feelings. — ♡</p>
+                </div>
+                
                 <div class="gallery-grid">
-                    <div class="gallery-img" style="background-image: url('mygal1.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal2.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal3.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal4.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal5.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal6.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal7.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal8.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal9.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal10.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal11.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal12.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal13.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal14.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('mygal15.jpeg');"></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal1.jpeg');"></div><div class="photo-badge">1</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal2.jpeg');"></div><div class="photo-badge">2</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal3.jpeg');"></div><div class="photo-badge">3</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal4.jpeg');"></div><div class="photo-badge">4</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal5.jpeg');"></div><div class="photo-badge">5</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal6.jpeg');"></div><div class="photo-badge">6</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal7.jpeg');"></div><div class="photo-badge">7</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal8.jpeg');"></div><div class="photo-badge">8</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal9.jpeg');"></div><div class="photo-badge">9</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal10.jpeg');"></div><div class="photo-badge">10</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal11.jpeg');"></div><div class="photo-badge">11</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal12.jpeg');"></div><div class="photo-badge">12</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal13.jpeg');"></div><div class="photo-badge">13</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal14.jpeg');"></div><div class="photo-badge">14</div></div>
+                    
+                    <div class="photo-card special-card">
+                        <div class="crown-icon">👑</div>
+                        <div class="gallery-img-sq" style="background-image: url('mygal15.jpeg');"></div>
+                        <div class="photo-badge">15</div>
+                    </div>
+                </div>
+
+                <div class="gallery-footer letter-anim">
+                    No matter how many pictures we take,<br>my favorite place will always be beside you.
                 </div>
             </div>
         </div>
 
-        <!-- NEW SECTION: Our Gallery -->
         <div class="memory-viewport" data-audio="audio-ourgallery">
             <div class="gallery-container hidden-element">
                 <div class="tape"></div>
-                <h2 class="gallery-title letter-anim">Our Gallery</h2>
+                <div class="gallery-header letter-anim">
+                    <h2 class="gallery-title">Our Gallery</h2>
+                    <p class="gallery-subtitle">♡ — A lifetime of moments together. — ♡</p>
+                </div>
+                
                 <div class="gallery-grid">
-                    <div class="gallery-img" style="background-image: url('ourgal1.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal2.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal3.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal4.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal5.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal6.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal7.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal8.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal9.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal10.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal11.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal12.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal13.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal14.jpeg');"></div>
-                    <div class="gallery-img" style="background-image: url('ourgal15.jpeg');"></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal1.jpeg');"></div><div class="photo-badge">1</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal2.jpeg');"></div><div class="photo-badge">2</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal3.jpeg');"></div><div class="photo-badge">3</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal4.jpeg');"></div><div class="photo-badge">4</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal5.jpeg');"></div><div class="photo-badge">5</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal6.jpeg');"></div><div class="photo-badge">6</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal7.jpeg');"></div><div class="photo-badge">7</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal8.jpeg');"></div><div class="photo-badge">8</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal9.jpeg');"></div><div class="photo-badge">9</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal10.jpeg');"></div><div class="photo-badge">10</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal11.jpeg');"></div><div class="photo-badge">11</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal12.jpeg');"></div><div class="photo-badge">12</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal13.jpeg');"></div><div class="photo-badge">13</div></div>
+                    <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal14.jpeg');"></div><div class="photo-badge">14</div></div>
+                    
+                    <div class="photo-card special-card">
+                        <div class="crown-icon">👑</div>
+                        <div class="gallery-img-sq" style="background-image: url('ourgal15.jpeg');"></div>
+                        <div class="photo-badge">15</div>
+                    </div>
+                </div>
+
+                <div class="gallery-footer letter-anim">
+                    Every picture tells a story,<br>but you are my favorite chapter.
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- The Popup Modal -->
     <div class="modal-overlay" id="questionModal">
         <div class="modal-box">
             <h2>Do you love me?</h2>
@@ -723,7 +637,7 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show-element');
                     
-                    // Trigger slow image fades
+                    // Trigger slow image fades for memories
                     const slowImages = entry.target.querySelectorAll('.slow-image');
                     slowImages.forEach(img => img.classList.add('show-element'));
 
@@ -731,11 +645,11 @@
                     const textAnim = entry.target.querySelectorAll('.letter-anim');
                     textAnim.forEach(t => t.classList.add('start'));
 
-                    // Trigger New Gallery 2-second animations with a beautiful staggered delay
-                    const galleryImages = entry.target.querySelectorAll('.gallery-img');
-                    galleryImages.forEach((img, index) => {
+                    // Trigger Gallery 2-second animations with a beautiful staggered delay
+                    const galleryCards = entry.target.querySelectorAll('.photo-card');
+                    galleryCards.forEach((card, index) => {
                         setTimeout(() => {
-                            img.classList.add('show-element');
+                            card.classList.add('show-element');
                         }, index * 100); // 100ms stagger between each photo popping in
                     });
                 }
@@ -744,7 +658,7 @@
 
         document.querySelectorAll('.hidden-element').forEach(el => scrollObserver.observe(el));
 
-        // 5. Memory & Gallery Audio Switching Logic
+        // 5. Audio Switching Logic (Handles Memories AND Galleries)
         const memoryObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const audioId = entry.target.getAttribute('data-audio');
@@ -764,7 +678,7 @@
                     if(memoryAudio) memoryAudio.pause();
                 }
             });
-        }, { threshold: 0.6 });
+        }, { threshold: 0.5 }); // Triggers when 50% of screen is reached
 
         // 6. Envelope Logic
         const envelope = document.getElementById('envelope');
