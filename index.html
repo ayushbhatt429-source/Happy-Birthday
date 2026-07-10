@@ -13,7 +13,7 @@
             padding: 0;
             background: radial-gradient(circle at center, #fff0f5 0%, #ffd1dc 100%);
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden; /* Prevents side-scrolling */
+            overflow-x: hidden;
             scroll-behavior: smooth;
             color: #d81b60;
         }
@@ -41,7 +41,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 105, 135, 0.2);
-            -webkit-tap-highlight-color: transparent; /* Removes blue tap box on mobile */
+            -webkit-tap-highlight-color: transparent;
         }
 
         .music-btn:hover {
@@ -73,7 +73,6 @@
             box-sizing: border-box;
         }
 
-        /* Heart Photo Masks */
         .photo-heart {
             width: 250px;
             height: 250px;
@@ -119,7 +118,6 @@
             font-weight: 400;
         }
 
-        /* 4 Info Cards */
         .cards-container {
             display: flex;
             gap: 20px;
@@ -139,7 +137,7 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
             transition: transform 0.3s ease;
-            flex: 1 1 200px; /* Allows cards to shrink and wrap gracefully */
+            flex: 1 1 200px; 
             max-width: 250px;
         }
 
@@ -156,7 +154,7 @@
             text-align: center;
         }
 
-        /* SECTION 2: The Envelope (Mobile-Safe Sizing) */
+        /* SECTION 2: The Envelope */
         .envelope-section {
             height: 100vh;
             display: flex;
@@ -169,7 +167,7 @@
 
         .envelope-container {
             position: relative;
-            width: 300px; /* Shrunk slightly to guarantee it fits on all phones */
+            width: 300px;
             height: 200px;
             background: #e91e63;
             border-radius: 0 0 10px 10px;
@@ -218,6 +216,14 @@
             font-weight: 400;
         }
 
+        .envelope-instruction {
+            margin-top: 15px !important;
+            font-weight: 600 !important;
+            color: #c2185b !important;
+            font-size: 1.05rem !important;
+            animation: bounce 2s infinite;
+        }
+
         .click-instruction {
             position: absolute;
             bottom: -40px;
@@ -234,29 +240,29 @@
         }
 
         .envelope-container.open .letter {
-            transform: translateY(-110px);
+            transform: translateY(-130px);
             opacity: 1; 
             z-index: 5;
         }
 
         .envelope-container.open .click-instruction { opacity: 0; }
 
-        /* SECTION 3: Our Memories */
-        .memories-section {
-            padding: 80px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
+        /* SECTION 3: Our Memories (Hidden Initially) */
+        #memories-container {
+            display: none; 
+            width: 100%;
         }
 
-        .memories-title {
-            text-align: center;
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            color: #c2185b;
-            margin-bottom: 50px;
-            text-shadow: 2px 2px 5px rgba(194, 24, 91, 0.2);
+        /* 1 Memory = 1 Full Screen */
+        .memory-viewport {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .memory-card {
@@ -266,15 +272,15 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 40px;
+            padding: 30px;
             box-shadow: 0 10px 30px rgba(255, 105, 135, 0.15);
-            transition: transform 0.3s ease;
+            max-width: 900px;
+            width: 100%;
         }
 
         .memory-img {
-            width: 220px;
-            height: 220px;
+            width: 250px;
+            height: 250px;
             flex-shrink: 0;
             background-color: #ffb6c1; 
             border-radius: 15px;
@@ -284,21 +290,21 @@
         }
 
         .memory-text {
-            padding-left: 30px;
+            padding-left: 40px;
             flex-grow: 1;
         }
 
         .memory-text h3 {
             color: #d81b60;
-            font-size: 1.8rem;
-            margin: 0 0 10px 0;
+            font-size: 2rem;
+            margin: 0 0 15px 0;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
 
         .memory-text p {
             color: #444;
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             line-height: 1.6;
             margin: 0;
         }
@@ -348,11 +354,6 @@
         .modal-btn:hover, .modal-btn:active { background: #c2185b; }
 
         /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-15px); }
-        }
-
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
@@ -372,40 +373,27 @@
             100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
 
-        /* 📱 STRICT MOBILE RESPONSIVENESS OVERRIDES 📱 */
+        /* 📱 MOBILE RESPONSIVENESS OVERRIDES */
         @media (max-width: 768px) {
-            /* Center the top bar on phones */
-            .top-bar { 
-                justify-content: center; 
-                padding: 15px; 
-            }
-            
-            /* Stack the top hearts and text */
-            .center-display { 
-                flex-direction: column; 
-                gap: 20px; 
-                padding-top: 20px;
-            }
-            
-            /* Shrink main elements so they fit screen width */
+            .top-bar { justify-content: center; padding: 15px; }
+            .center-display { flex-direction: column; gap: 20px; padding-top: 20px; }
             .photo-heart { width: 160px; height: 160px; }
             h1 { font-size: 3.5rem; }
             .subtitle { font-size: 0.75rem; }
             .main-desc { font-size: 0.95rem; padding: 0 10px; }
-            .memories-title { font-size: 3.2rem; margin-bottom: 30px; }
             
-            /* Stack memory cards vertically */
+            .memory-viewport { padding: 15px; }
             .memory-card {
                 flex-direction: column;
                 text-align: center;
-                padding: 20px 15px;
+                padding: 25px 20px;
+                max-height: 90vh;
+                overflow-y: auto;
             }
-            .memory-img { width: 200px; height: 200px; }
-            .memory-text {
-                padding-left: 0;
-                padding-top: 20px;
-            }
-            .memory-text h3 { font-size: 1.5rem; }
+            .memory-img { width: 200px; height: 200px; margin: 0 auto; }
+            .memory-text { padding-left: 0; padding-top: 25px; }
+            .memory-text h3 { font-size: 1.6rem; }
+            .memory-text p { font-size: 1rem; }
         }
     </style>
 </head>
@@ -414,6 +402,17 @@
     <audio id="bg-music" loop>
         <source src="song.mp3" type="audio/mpeg">
     </audio>
+
+    <audio id="audio-memory1" class="memory-audio" loop><source src="song1.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory2" class="memory-audio" loop><source src="song2.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory3" class="memory-audio" loop><source src="song3.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory4" class="memory-audio" loop><source src="song4.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory5" class="memory-audio" loop><source src="song5.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory6" class="memory-audio" loop><source src="song6.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory7" class="memory-audio" loop><source src="song7.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory8" class="memory-audio" loop><source src="song8.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory9" class="memory-audio" loop><source src="song9.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-memory10" class="memory-audio" loop><source src="song10.mp3" type="audio/mpeg"></audio>
 
     <div class="top-bar">
         <button class="music-btn" id="music-toggle" onclick="toggleMusic()">🎵 Play Music</button>
@@ -434,22 +433,10 @@
         </div>
 
         <div class="cards-container">
-            <div class="info-card">
-                <h3>❤️ Special You</h3>
-                <p>You mean the world to me.</p>
-            </div>
-            <div class="info-card">
-                <h3>🎁 Make a Wish</h3>
-                <p>May all your dreams come true.</p>
-            </div>
-            <div class="info-card">
-                <h3>🎂 Enjoy Your Day</h3>
-                <p>Today is all about you!</p>
-            </div>
-            <div class="info-card">
-                <h3>⭐ Forever & Always</h3>
-                <p>I'll always be by your side.</p>
-            </div>
+            <div class="info-card"><h3>❤️ Special You</h3><p>You mean the world to me.</p></div>
+            <div class="info-card"><h3>🎁 Make a Wish</h3><p>May all your dreams come true.</p></div>
+            <div class="info-card"><h3>🎂 Enjoy Your Day</h3><p>Today is all about you!</p></div>
+            <div class="info-card"><h3>⭐ Forever & Always</h3><p>I'll always be by your side.</p></div>
         </div>
         
         <div class="scroll-text">
@@ -463,92 +450,112 @@
             
             <div class="letter">
                 <p>Wishing you the happiest of birthdays! You are the best thing that has ever happened to me. I love you more than words can say. ❤️</p>
+                <p class="envelope-instruction">Scroll down for the best memories ⬇️</p>
             </div>
             
             <div class="click-instruction">Click here to open the message</div>
         </div>
     </div>
 
-    <div class="memories-section">
-        <h2 class="memories-title">Our Memories</h2>
+    <div id="memories-container">
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory1.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Your First Picture</h3>
-                <p>The moment I saw this picture, my heart skipped a beat. Your smile completely captivated me, and looking back, I realize this was the exact moment I started falling endlessly in love with you.</p>
+        <div class="memory-viewport" data-audio="audio-memory1">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory1.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Your First Picture</h3>
+                    <p>The moment I saw this picture, my heart skipped a beat. Your smile completely captivated me, and looking back, I realize this was the exact moment I started falling endlessly in love with you.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory2.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Our first picture</h3>
-                <p>Looking at this brings back so many butterflies. This was the start of our beautiful journey together, and I wouldn't trade this memory for anything in the world.</p>
+        <div class="memory-viewport" data-audio="audio-memory2">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory2.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Our first picture</h3>
+                    <p>Looking at this brings back so many butterflies. This was the start of our beautiful journey together, and I wouldn't trade this memory for anything in the world.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory3.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Our moment</h3>
-                <p>These moments can't be expressed through words. Just being there with you, lost in our own little world, is a feeling I will keep safe in my heart forever.</p>
+        <div class="memory-viewport" data-audio="audio-memory3">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory3.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Our moment</h3>
+                    <p>These moments can't be expressed through words. Just being there with you, lost in our own little world, is a feeling I will keep safe in my heart forever.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory4.jpeg');"></div>
-            <div class="memory-text">
-                <h3>My Birthday</h3>
-                <p>You made my birthday so incredibly special. All the love, effort, and tiny details you put into it showed me just how deeply you care. I am so lucky to have you by my side.</p>
+        <div class="memory-viewport" data-audio="audio-memory4">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory4.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>My Birthday</h3>
+                    <p>You made my birthday so incredibly special. All the love, effort, and tiny details you put into it showed me just how deeply you care. I am so lucky to have you by my side.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory5.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Title for Picture 5</h3>
-                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+        <div class="memory-viewport" data-audio="audio-memory5">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory5.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Title for Picture 5</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory6.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Title for Picture 6</h3>
-                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+        <div class="memory-viewport" data-audio="audio-memory6">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory6.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Title for Picture 6</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory7.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Title for Picture 7</h3>
-                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+        <div class="memory-viewport" data-audio="audio-memory7">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory7.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Title for Picture 7</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory8.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Title for Picture 8</h3>
-                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+        <div class="memory-viewport" data-audio="audio-memory8">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory8.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Title for Picture 8</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory9.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Title for Picture 9</h3>
-                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+        <div class="memory-viewport" data-audio="audio-memory9">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory9.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Title for Picture 9</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+                </div>
             </div>
         </div>
 
-        <div class="memory-card">
-            <div class="memory-img" style="background-image: url('memory10.jpeg');"></div>
-            <div class="memory-text">
-                <h3>Title for Picture 10</h3>
-                <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+        <div class="memory-viewport" data-audio="audio-memory10">
+            <div class="memory-card">
+                <div class="memory-img" style="background-image: url('memory10.jpeg');"></div>
+                <div class="memory-text">
+                    <h3>Title for Picture 10</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
+                </div>
             </div>
         </div>
 
@@ -563,6 +570,7 @@
     </div>
 
     <script>
+        // Background Hearts
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('bg-heart');
@@ -575,21 +583,50 @@
         }
         setInterval(createHeart, 500);
 
-        const audio = document.getElementById('bg-music');
-        const button = document.getElementById('music-toggle');
-        let isPlaying = false;
+        // Main Music Button Toggle
+        const mainAudio = document.getElementById('bg-music');
+        const mainButton = document.getElementById('music-toggle');
+        let isMainPlaying = false;
 
         function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-                button.innerHTML = '🎵 Play Music';
+            if (isMainPlaying) {
+                mainAudio.pause();
+                mainButton.innerHTML = '🎵 Play Music';
             } else {
-                audio.play();
-                button.innerHTML = '⏸️ Pause Music';
+                mainAudio.play();
+                mainButton.innerHTML = '⏸️ Pause Music';
             }
-            isPlaying = !isPlaying;
+            isMainPlaying = !isMainPlaying;
         }
 
+        // Automatic Song Player for Memories
+        const memoryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const audioId = entry.target.getAttribute('data-audio');
+                const memoryAudio = document.getElementById(audioId);
+                
+                if (entry.isIntersecting) {
+                    // Pause the main background music if it is playing
+                    if (isMainPlaying) {
+                        mainAudio.pause();
+                        mainButton.innerHTML = '🎵 Play Music';
+                        isMainPlaying = false;
+                    }
+                    // Pause all other memory songs
+                    document.querySelectorAll('.memory-audio').forEach(a => a.pause());
+                    // Play this memory's song
+                    if(memoryAudio) {
+                        memoryAudio.currentTime = 0; // Start song from beginning
+                        memoryAudio.play().catch(e => console.log("Autoplay blocked by browser."));
+                    }
+                } else {
+                    // Pause song when scrolling away
+                    if(memoryAudio) memoryAudio.pause();
+                }
+            });
+        }, { threshold: 0.6 }); // Triggers when 60% of the memory takes up the screen
+
+        // Envelope and Modal Logic
         const envelope = document.getElementById('envelope');
         const modal = document.getElementById('questionModal');
 
@@ -600,11 +637,25 @@
         }
 
         function openEnvelope() {
-            modal.style.display = 'none';
-            envelope.classList.add('open');
+            modal.style.display = 'none'; // Close modal
+            envelope.classList.add('open'); // Open envelope
+
+            // Silent trick to "unlock" all audio elements on mobile after click
+            document.querySelectorAll('.memory-audio').forEach(a => {
+                a.play().then(() => a.pause()).catch(e => console.log("Audio unlock failed:", e));
+            });
+
+            // Reveal the hidden memories section
+            document.getElementById('memories-container').style.display = 'block';
+
+            // Start observing the memory screens to play their songs
+            document.querySelectorAll('.memory-viewport').forEach(screen => {
+                memoryObserver.observe(screen);
+            });
+
             setTimeout(() => {
                 envelope.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300); // Slight delay for smoother mobile scrolling
+            }, 300);
         }
     </script>
 </body>
