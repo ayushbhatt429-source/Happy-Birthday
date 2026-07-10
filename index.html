@@ -12,12 +12,12 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f6efe8; /* Warm beige background */
+            background-color: #f6efe8; 
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             font-family: 'Playfair Display', serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            color: #5c4a3d; /* Dark brown text */
+            color: #5c4a3d; 
         }
 
         /* ------------------------------------- */
@@ -51,16 +51,23 @@
         /* ------------------------------------- */
         /* ANIMATION CLASSES                     */
         /* ------------------------------------- */
-        /* Hides elements initially before they scroll into view */
+        /* General Hidden elements */
         .hidden-element {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        /* Slow Image Fade-in (Takes 5.5 Seconds) */
+        .slow-image {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 5.5s ease-in-out, transform 5.5s ease-in-out;
         }
 
         .show-element {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
         /* Letter-by-letter animation styling */
@@ -71,7 +78,8 @@
         }
 
         .letter-anim.start span {
-            animation: popIn 0.3s forwards;
+            /* The individual letter takes 2 seconds to smoothly fade in once triggered */
+            animation: popIn 2s forwards ease-out;
         }
 
         @keyframes popIn {
@@ -92,14 +100,15 @@
             padding: 50px 20px;
         }
 
-        /* Simulates torn paper border */
-        .scrapbook-container {
+        /* Side-by-side row layout for images and text */
+        .scrapbook-row {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 30px;
+            justify-content: center;
+            gap: 40px;
             width: 100%;
-            max-width: 800px;
+            max-width: 1200px;
         }
 
         /* Photo wrappers with "tape" effect */
@@ -109,7 +118,6 @@
             padding: 15px;
             box-shadow: 2px 5px 15px rgba(0,0,0,0.1);
             transform: rotate(-2deg);
-            margin: 20px 0;
         }
 
         .photo-wrapper.right {
@@ -149,13 +157,14 @@
             transform: rotate(-10deg);
         }
 
-        .doodle-1 { right: -60px; top: 50%; }
+        .doodle-1 { right: -60px; top: 80%; }
         .doodle-2 { left: -80px; bottom: 20%; transform: rotate(15deg); }
 
         .text-content {
             text-align: center;
-            max-width: 600px;
+            max-width: 500px;
             margin: 40px 0;
+            padding: 0 20px;
         }
 
         .subtitle {
@@ -177,7 +186,7 @@
 
         .my-love-text {
             font-family: 'Great Vibes', cursive;
-            color: #c97a7e; /* Soft pinkish brown */
+            color: #c97a7e;
             font-size: 4rem;
             margin-top: -10px;
         }
@@ -206,7 +215,7 @@
             position: relative;
             width: 300px;
             height: 200px;
-            background: #d4a373; /* Warm kraft paper color */
+            background: #d4a373;
             border-radius: 0 0 10px 10px;
             cursor: pointer;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
@@ -221,7 +230,7 @@
             top: 0; left: 0; width: 0; height: 0;
             border-left: 150px solid transparent;
             border-right: 150px solid transparent;
-            border-top: 120px solid #e9bda5; /* Lighter kraft color */
+            border-top: 120px solid #e9bda5;
             transform-origin: top;
             transition: transform 0.8s ease, z-index 0.2s;
             z-index: 4;
@@ -322,7 +331,7 @@
         }
 
         /* ------------------------------------- */
-        /* MODAL (For the Trick Question)        */
+        /* MODAL                                 */
         /* ------------------------------------- */
         .modal-overlay {
             display: none; 
@@ -369,10 +378,14 @@
         /* ------------------------------------- */
         /* MOBILE RESPONSIVENESS                 */
         /* ------------------------------------- */
-        @media (max-width: 768px) {
-            h1 { font-size: 4rem; }
-            .my-love-text { font-size: 3rem; }
-            .photo-heart { width: 180px; height: 180px; }
+        @media (max-width: 950px) {
+            .scrapbook-row {
+                flex-direction: column;
+                gap: 50px;
+            }
+            h1 { font-size: 4.5rem; }
+            .my-love-text { font-size: 3.5rem; }
+            .photo-heart { width: 200px; height: 200px; }
             .doodle-1 { right: -10px; font-size: 1.5rem; }
             .doodle-2 { left: 0px; font-size: 1.5rem; }
             
@@ -414,9 +427,10 @@
 
     <!-- SECTION 1: Welcome Screen -->
     <div class="hero-section">
-        <div class="scrapbook-container">
+        <!-- New row layout forces image-text-image horizontally -->
+        <div class="scrapbook-row">
             
-            <div class="photo-wrapper hidden-element">
+            <div class="photo-wrapper slow-image">
                 <div class="tape"></div>
                 <div class="photo-heart" style="background-image: url('photo1.jpeg'); background-position: center top; background-size: cover;"></div>
                 <span class="doodle-text doodle-1">You make<br>every day<br>brighter ♡</span>
@@ -426,10 +440,10 @@
                 <p class="subtitle letter-anim">— TO MY FAVORITE PERSON —</p>
                 <h1 class="letter-anim">Happy Birthday</h1>
                 <div class="my-love-text letter-anim">♡ my love ♡</div>
-                <p class="main-desc hidden-element">You make every day brighter. Wishing you endless happiness, love, and all the beautiful things in life.</p>
+                <p class="main-desc letter-anim">You make every day brighter. Wishing you endless happiness, love, and all the beautiful things in life.</p>
             </div>
 
-            <div class="photo-wrapper right hidden-element">
+            <div class="photo-wrapper right slow-image">
                 <div class="tape"></div>
                 <div class="photo-heart" style="background-image: url('photo2.jpeg'); background-position: center top; background-size: cover;"></div>
                 <span class="doodle-text doodle-2">So grateful<br>to have you<br>in my life ♡</span>
@@ -453,14 +467,14 @@
     <!-- SECTION 3: Our 14 Memories -->
     <div id="memories-container">
 
-        <!-- Memories 1-4 (From your previous prompts) -->
         <div class="memory-viewport" data-audio="audio-memory1">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory1.jpeg');"></div>
+                <!-- Image gets the 5.5 second fade in class -->
+                <div class="memory-img slow-image" style="background-image: url('memory1.jpeg');"></div>
                 <div class="memory-text">
                     <h3 class="letter-anim">Your First Picture</h3>
-                    <p>The moment I saw this picture, my heart skipped a beat. Your smile completely captivated me, and looking back, I realize this was the exact moment I started falling endlessly in love with you.</p>
+                    <p class="letter-anim">The moment I saw this picture, my heart skipped a beat. Your smile completely captivated me, and looking back, I realize this was the exact moment I started falling endlessly in love with you.</p>
                 </div>
             </div>
         </div>
@@ -468,10 +482,10 @@
         <div class="memory-viewport" data-audio="audio-memory2">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory2.jpeg');"></div>
+                <div class="memory-img slow-image" style="background-image: url('memory2.jpeg');"></div>
                 <div class="memory-text">
                     <h3 class="letter-anim">Our first picture</h3>
-                    <p>Looking at this brings back so many butterflies. This was the start of our beautiful journey together, and I wouldn't trade this memory for anything in the world.</p>
+                    <p class="letter-anim">Looking at this brings back so many butterflies. This was the start of our beautiful journey together, and I wouldn't trade this memory for anything in the world.</p>
                 </div>
             </div>
         </div>
@@ -479,10 +493,10 @@
         <div class="memory-viewport" data-audio="audio-memory3">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory3.jpeg');"></div>
+                <div class="memory-img slow-image" style="background-image: url('memory3.jpeg');"></div>
                 <div class="memory-text">
                     <h3 class="letter-anim">Our moment</h3>
-                    <p>These moments can't be expressed through words. Just being there with you, lost in our own little world, is a feeling I will keep safe in my heart forever.</p>
+                    <p class="letter-anim">These moments can't be expressed through words. Just being there with you, lost in our own little world, is a feeling I will keep safe in my heart forever.</p>
                 </div>
             </div>
         </div>
@@ -490,10 +504,10 @@
         <div class="memory-viewport" data-audio="audio-memory4">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory4.jpeg');"></div>
+                <div class="memory-img slow-image" style="background-image: url('memory4.jpeg');"></div>
                 <div class="memory-text">
                     <h3 class="letter-anim">My Birthday</h3>
-                    <p>You made my birthday so incredibly special. All the love, effort, and tiny details you put into it showed me just how deeply you care. I am so lucky to have you by my side.</p>
+                    <p class="letter-anim">You made my birthday so incredibly special. All the love, effort, and tiny details you put into it showed me just how deeply you care. I am so lucky to have you by my side.</p>
                 </div>
             </div>
         </div>
@@ -502,80 +516,80 @@
         <div class="memory-viewport" data-audio="audio-memory5">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory5.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 5</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory5.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 5</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory6">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory6.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 6</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory6.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 6</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory7">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory7.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 7</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory7.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 7</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory8">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory8.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 8</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory8.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 8</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory9">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory9.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 9</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory9.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 9</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory10">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory10.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 10</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory10.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 10</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory11">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory11.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 11</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory11.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 11</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory12">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory12.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 12</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory12.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 12</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory13">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory13.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 13</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory13.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 13</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
         <div class="memory-viewport" data-audio="audio-memory14">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <div class="memory-img" style="background-image: url('memory14.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 14</h3><p>Your beautiful description goes right here.</p></div>
+                <div class="memory-img slow-image" style="background-image: url('memory14.jpeg');"></div>
+                <div class="memory-text"><h3 class="letter-anim">Memory 14</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
             </div>
         </div>
 
@@ -591,14 +605,21 @@
     </div>
 
     <script>
-        // 1. Prepare Letter-by-Letter Animation Logic
+        // 1. Prepare Letter-by-Letter Animation Logic for exactly 30 seconds
         document.querySelectorAll('.letter-anim').forEach(el => {
             let text = el.innerText;
+            let len = text.length;
+            
+            // Forces the complete animation sequence to stretch out over exactly 30 seconds
+            let totalDuration = 30; 
+            let delayPerChar = totalDuration / len; 
+
             el.innerHTML = '';
             text.split('').forEach((char, i) => {
                 let span = document.createElement('span');
                 span.innerText = char === ' ' ? '\u00A0' : char;
-                span.style.animationDelay = `${i * 0.05}s`;
+                // Applies the calculated delay to each letter
+                span.style.animationDelay = `${i * delayPerChar}s`;
                 el.appendChild(span);
             });
         });
@@ -612,21 +633,27 @@
             document.getElementById('intro-screen').style.opacity = '0';
             setTimeout(() => { document.getElementById('intro-screen').style.display = 'none'; }, 1000);
             
-            // Play main music
+            // Play main music seamlessly
             mainAudio.play().catch(e => console.log("Audio play failed."));
             isMainPlaying = true;
 
-            // Trigger animations for the first screen immediately
-            document.querySelectorAll('.hero-section .hidden-element').forEach(el => el.classList.add('show-element'));
+            // Trigger slow 5.5 second image fades and 30-second text animations for the hero screen
+            document.querySelectorAll('.hero-section .slow-image').forEach(el => el.classList.add('show-element'));
             document.querySelectorAll('.hero-section .letter-anim').forEach(el => el.classList.add('start'));
         }
 
-        // 3. Scroll Animations (Images sliding in, text animating letter-by-letter as you scroll down)
+        // 3. Scroll Animations 
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Triggers container fade
                     entry.target.classList.add('show-element');
-                    // Find any letter animations inside this element and trigger them
+                    
+                    // Triggers the slow 5.5s image fade inside the container
+                    const slowImages = entry.target.querySelectorAll('.slow-image');
+                    slowImages.forEach(img => img.classList.add('show-element'));
+
+                    // Triggers the 30-second text animations
                     const textAnim = entry.target.querySelectorAll('.letter-anim');
                     textAnim.forEach(t => t.classList.add('start'));
                 }
