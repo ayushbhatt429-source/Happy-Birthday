@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday My Love</title>
-    <!-- Beautiful fonts to match the scrapbook aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500&display=swap" rel="stylesheet">
     
     <style>
@@ -18,6 +17,7 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             color: #5c4a3d; 
+            position: relative;
         }
 
         /* ------------------------------------- */
@@ -41,6 +41,8 @@
             font-size: 3rem;
             color: #8c6a58;
             animation: pulse 2s infinite alternate;
+            text-align: center;
+            padding: 20px;
         }
 
         @keyframes pulse {
@@ -49,16 +51,34 @@
         }
 
         /* ------------------------------------- */
+        /* FLORAL STAMPS & DECORATIONS           */
+        /* ------------------------------------- */
+        .floral-stamp {
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            opacity: 0.25; /* Soft, faded look */
+            z-index: 1; /* Stays behind everything */
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* A few fixed massive flowers on the sides of the screen */
+        .fixed-flower-1 {
+            position: fixed; top: -5%; left: -5%; font-size: 25vw; color: #c97a7e; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(15deg);
+        }
+        .fixed-flower-2 {
+            position: fixed; bottom: -5%; right: -5%; font-size: 20vw; color: #d4a373; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(-25deg);
+        }
+
+        /* ------------------------------------- */
         /* ANIMATION CLASSES                     */
         /* ------------------------------------- */
-        /* General Hidden elements */
         .hidden-element {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 1.5s ease, transform 1.5s ease;
         }
 
-        /* Slow Image Fade-in (Takes 5.5 Seconds) */
         .slow-image {
             opacity: 0;
             transform: translateY(40px);
@@ -70,7 +90,6 @@
             transform: translateY(0) !important;
         }
 
-        /* Letter-by-letter animation styling */
         .letter-anim span {
             opacity: 0;
             display: inline-block;
@@ -78,7 +97,6 @@
         }
 
         .letter-anim.start span {
-            /* The individual letter takes 2 seconds to smoothly fade in once triggered */
             animation: popIn 2s forwards ease-out;
         }
 
@@ -100,7 +118,6 @@
             padding: 50px 20px;
         }
 
-        /* Side-by-side row layout for images and text */
         .scrapbook-row {
             display: flex;
             flex-direction: row;
@@ -109,9 +126,10 @@
             gap: 40px;
             width: 100%;
             max-width: 1200px;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Photo wrappers with "tape" effect */
         .photo-wrapper {
             position: relative;
             background: #fff;
@@ -120,11 +138,8 @@
             transform: rotate(-2deg);
         }
 
-        .photo-wrapper.right {
-            transform: rotate(3deg);
-        }
+        .photo-wrapper.right { transform: rotate(3deg); }
 
-        /* The Masking Tape */
         .tape {
             position: absolute;
             top: -15px;
@@ -148,7 +163,6 @@
             -webkit-mask-position: center;
         }
 
-        /* Doodle / Handwriting text */
         .doodle-text {
             font-family: 'Caveat', cursive;
             font-size: 2rem;
@@ -286,6 +300,7 @@
             position: relative;
             padding: 20px;
             box-sizing: border-box;
+            overflow: hidden; /* Keeps flowers inside */
         }
 
         .memory-card {
@@ -298,6 +313,7 @@
             max-width: 900px;
             width: 100%;
             position: relative;
+            z-index: 10; /* Keeps card above flowers */
         }
 
         .memory-img {
@@ -379,21 +395,14 @@
         /* MOBILE RESPONSIVENESS                 */
         /* ------------------------------------- */
         @media (max-width: 950px) {
-            .scrapbook-row {
-                flex-direction: column;
-                gap: 50px;
-            }
+            .scrapbook-row { flex-direction: column; gap: 50px; }
             h1 { font-size: 4.5rem; }
             .my-love-text { font-size: 3.5rem; }
             .photo-heart { width: 200px; height: 200px; }
             .doodle-1 { right: -10px; font-size: 1.5rem; }
             .doodle-2 { left: 0px; font-size: 1.5rem; }
             
-            .memory-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 25px 20px;
-            }
+            .memory-card { flex-direction: column; text-align: center; padding: 25px 20px; }
             .memory-img { width: 220px; height: 220px; margin: 0 auto; transform: rotate(0deg); }
             .memory-text { padding-left: 0; padding-top: 25px; }
             .memory-text h3 { font-size: 2.8rem; }
@@ -402,14 +411,14 @@
 </head>
 <body>
 
-    <!-- Invisible trigger screen to bypass browser audio blocks -->
+    <div class="fixed-flower-1">✿</div>
+    <div class="fixed-flower-2">❀</div>
+
     <div id="intro-screen" onclick="startExperience()">
         <p class="tap-text">Tap anywhere to open your surprise ❤️</p>
     </div>
 
-    <!-- AUDIO FILES -->
     <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
-    <!-- 14 Individual Memory Songs -->
     <audio id="audio-memory1" class="memory-audio" loop><source src="song1.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory2" class="memory-audio" loop><source src="song2.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory3" class="memory-audio" loop><source src="song3.mp3" type="audio/mpeg"></audio>
@@ -425,9 +434,7 @@
     <audio id="audio-memory13" class="memory-audio" loop><source src="song13.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory14" class="memory-audio" loop><source src="song14.mp3" type="audio/mpeg"></audio>
 
-    <!-- SECTION 1: Welcome Screen -->
-    <div class="hero-section">
-        <!-- New row layout forces image-text-image horizontally -->
+    <div class="hero-section" id="hero">
         <div class="scrapbook-row">
             
             <div class="photo-wrapper slow-image">
@@ -452,8 +459,7 @@
         </div>
     </div>
 
-    <!-- SECTION 2: Interactive Envelope -->
-    <div class="envelope-section hidden-element">
+    <div class="envelope-section hidden-element" id="envelope-sec">
         <div class="envelope-container" id="envelope" onclick="openModal()">
             <div class="flap"></div>
             <div class="letter">
@@ -464,13 +470,11 @@
         </div>
     </div>
 
-    <!-- SECTION 3: Our 14 Memories -->
     <div id="memories-container">
 
         <div class="memory-viewport" data-audio="audio-memory1">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
-                <!-- Image gets the 5.5 second fade in class -->
                 <div class="memory-img slow-image" style="background-image: url('memory1.jpeg');"></div>
                 <div class="memory-text">
                     <h3 class="letter-anim">Your First Picture</h3>
@@ -512,90 +516,39 @@
             </div>
         </div>
 
-        <!-- Memories 5-14 -->
         <div class="memory-viewport" data-audio="audio-memory5">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory5.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 5</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory5.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 5</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory6">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory6.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 6</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory6.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 6</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory7">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory7.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 7</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory7.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 7</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory8">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory8.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 8</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory8.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 8</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory9">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory9.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 9</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory9.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 9</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory10">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory10.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 10</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory10.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 10</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory11">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory11.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 11</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory11.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 11</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory12">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory12.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 12</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory12.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 12</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory13">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory13.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 13</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory13.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 13</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-
         <div class="memory-viewport" data-audio="audio-memory14">
-            <div class="memory-card hidden-element">
-                <div class="tape"></div>
-                <div class="memory-img slow-image" style="background-image: url('memory14.jpeg');"></div>
-                <div class="memory-text"><h3 class="letter-anim">Memory 14</h3><p class="letter-anim">Your beautiful description goes right here.</p></div>
-            </div>
+            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory14.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 14</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
 
     </div>
 
-    <!-- The Popup Modal -->
     <div class="modal-overlay" id="questionModal">
         <div class="modal-box">
             <h2>Do you love me?</h2>
@@ -605,55 +558,79 @@
     </div>
 
     <script>
-        // 1. Prepare Letter-by-Letter Animation Logic for exactly 30 seconds
+        // 1. Generate Organic Background Flowers
+        // This script scatters soft, line-art floral elements everywhere to make the page look fully filled.
+        const decorSymbols = ['❀', '✿', '❁', '✾', '🌿', '🍃', '🌾', '🍂'];
+        const colors = ['#e9bda5', '#c97a7e', '#d4a373', '#dcbfa6'];
+        
+        function addDecor(container, count) {
+            for(let i=0; i<count; i++) {
+                let decor = document.createElement('div');
+                decor.classList.add('floral-stamp');
+                decor.innerText = decorSymbols[Math.floor(Math.random() * decorSymbols.length)];
+                
+                decor.style.top = Math.floor(Math.random() * 90) + '%';
+                decor.style.left = Math.floor(Math.random() * 90) + '%';
+                decor.style.fontSize = Math.floor(Math.random() * 6 + 4) + 'rem';
+                decor.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
+                decor.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(decor);
+            }
+        }
+        
+        // Fill hero and envelope sections with background decor
+        addDecor(document.getElementById('hero'), 8);
+        addDecor(document.getElementById('envelope-sec'), 6);
+
+        // Fill EVERY memory viewport with 4 random floral stamps
+        document.querySelectorAll('.memory-viewport').forEach(viewport => {
+            addDecor(viewport, 4);
+        });
+
+
+        // 2. Prepare Letter-by-Letter Animation Logic for EXACTLY 10 seconds
         document.querySelectorAll('.letter-anim').forEach(el => {
             let text = el.innerText;
             let len = text.length;
             
-            // Forces the complete animation sequence to stretch out over exactly 30 seconds
-            let totalDuration = 30; 
-            let delayPerChar = totalDuration / len; 
+            // Forces the complete animation sequence to stretch out over exactly 10 seconds
+            let totalDuration = 10; 
+            let delayPerChar = totalDuration / (len || 1); 
 
             el.innerHTML = '';
             text.split('').forEach((char, i) => {
                 let span = document.createElement('span');
                 span.innerText = char === ' ' ? '\u00A0' : char;
-                // Applies the calculated delay to each letter
                 span.style.animationDelay = `${i * delayPerChar}s`;
                 el.appendChild(span);
             });
         });
 
-        // 2. Start Experience (Triggered by Tap to bypass browser block)
+        // 3. Start Experience
         const mainAudio = document.getElementById('bg-music');
         let isMainPlaying = false;
 
         function startExperience() {
-            // Hide intro screen
             document.getElementById('intro-screen').style.opacity = '0';
             setTimeout(() => { document.getElementById('intro-screen').style.display = 'none'; }, 1000);
             
-            // Play main music seamlessly
             mainAudio.play().catch(e => console.log("Audio play failed."));
             isMainPlaying = true;
 
-            // Trigger slow 5.5 second image fades and 30-second text animations for the hero screen
             document.querySelectorAll('.hero-section .slow-image').forEach(el => el.classList.add('show-element'));
             document.querySelectorAll('.hero-section .letter-anim').forEach(el => el.classList.add('start'));
         }
 
-        // 3. Scroll Animations 
+        // 4. Scroll Animations 
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Triggers container fade
                     entry.target.classList.add('show-element');
                     
-                    // Triggers the slow 5.5s image fade inside the container
                     const slowImages = entry.target.querySelectorAll('.slow-image');
                     slowImages.forEach(img => img.classList.add('show-element'));
 
-                    // Triggers the 30-second text animations
                     const textAnim = entry.target.querySelectorAll('.letter-anim');
                     textAnim.forEach(t => t.classList.add('start'));
                 }
@@ -662,21 +639,18 @@
 
         document.querySelectorAll('.hidden-element').forEach(el => scrollObserver.observe(el));
 
-        // 4. Memory Audio Switching Logic
+        // 5. Memory Audio Switching Logic
         const memoryObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const audioId = entry.target.getAttribute('data-audio');
                 const memoryAudio = document.getElementById(audioId);
                 
                 if (entry.isIntersecting) {
-                    // Pause Main Song
                     if (isMainPlaying) {
                         mainAudio.pause();
                         isMainPlaying = false;
                     }
-                    // Pause all other memory songs
                     document.querySelectorAll('.memory-audio').forEach(a => a.pause());
-                    // Play this memory's song
                     if(memoryAudio) {
                         memoryAudio.currentTime = 0; 
                         memoryAudio.play().catch(e => console.log("Autoplay blocked."));
@@ -687,7 +661,7 @@
             });
         }, { threshold: 0.6 });
 
-        // 5. Envelope Logic
+        // 6. Envelope Logic
         const envelope = document.getElementById('envelope');
         const modal = document.getElementById('questionModal');
 
@@ -701,7 +675,6 @@
             modal.style.display = 'none'; 
             envelope.classList.add('open'); 
 
-            // Silent unlock trick for mobile audio
             document.querySelectorAll('.memory-audio').forEach(a => {
                 a.play().then(() => a.pause()).catch(e => console.log("Audio unlock failed"));
             });
