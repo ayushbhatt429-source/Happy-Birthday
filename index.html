@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday My Love</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Upgraded to premium, elegant fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Base page styling */
+        /* Base page styling with heavy floral background */
         body {
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle at center, #fff0f5 0%, #ffd1dc 100%);
-            font-family: 'Poppins', sans-serif;
+            /* Added a dark overlay and a rich floral background image */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518895949257-7621bf272b66?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Playfair Display', serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            color: #d81b60;
+            color: #fff; /* Switched text to white for contrast */
         }
 
         /* Top Bar with Music Button */
@@ -31,22 +36,24 @@
         }
 
         .music-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: 2px solid #ff9a9e;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 30px;
             padding: 10px 25px;
-            color: #d63384;
-            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
             font-weight: 600;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 105, 135, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             -webkit-tap-highlight-color: transparent;
         }
 
         .music-btn:hover {
-            background: #ff9a9e;
-            color: white;
+            background: rgba(255, 105, 135, 0.8);
+            border-color: rgba(255, 105, 135, 1);
             transform: scale(1.05);
         }
 
@@ -62,14 +69,21 @@
             padding-top: 50px;
         }
 
-        .center-display {
+        /* The new Frosted Glass Panel to fill empty space */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 40px;
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
-            padding: 0 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             box-sizing: border-box;
         }
 
@@ -82,8 +96,9 @@
             -webkit-mask-size: 100%;
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: center;
-            filter: drop-shadow(0px 15px 25px rgba(216, 27, 96, 0.3));
+            filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.4));
             animation: float 4s ease-in-out infinite alternate;
+            border: 2px solid rgba(255,255,255,0.2); /* Added subtle border */
         }
 
         .photo-heart.right { animation-delay: 1s; }
@@ -94,28 +109,29 @@
         }
 
         .subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
+            font-size: 1rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 600;
-            color: #d81b60;
+            color: #ff9a9e;
             margin-bottom: -10px;
         }
 
         h1 {
-            font-family: 'Dancing Script', cursive;
-            color: #c2185b;
-            font-size: 6rem;
+            font-family: 'Great Vibes', cursive;
+            color: #fff;
+            font-size: 6.5rem;
             margin: 0;
-            line-height: 1.1;
-            text-shadow: 2px 4px 10px rgba(194, 24, 91, 0.2);
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(255, 105, 135, 0.6), 2px 4px 10px rgba(0,0,0,0.5);
         }
 
         .main-desc {
-            color: #555;
-            font-size: 1.1rem;
+            color: #eee;
+            font-size: 1.2rem;
             margin-top: 20px;
             font-weight: 400;
+            font-style: italic;
         }
 
         .cards-container {
@@ -125,33 +141,39 @@
             flex-wrap: wrap;
             justify-content: center;
             padding: 0 15px;
+            width: 100%;
+            max-width: 1200px;
         }
 
         .info-card {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            width: 200px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease;
             flex: 1 1 200px; 
             max-width: 250px;
         }
 
-        .info-card:hover { transform: translateY(-5px); }
-        .info-card h3 { margin: 10px 0 5px 0; font-size: 1.1rem; color: #c2185b; }
-        .info-card p { margin: 0; font-size: 0.85rem; color: #666; }
+        .info-card:hover { 
+            transform: translateY(-5px); 
+            border-color: rgba(255, 105, 135, 0.5);
+        }
+        .info-card h3 { margin: 10px 0 5px 0; font-size: 1.2rem; color: #ffb6c1; }
+        .info-card p { margin: 0; font-size: 0.9rem; color: #ddd; }
 
         .scroll-text {
-            color: #c2185b;
-            font-size: 1rem;
+            color: #ffb6c1;
+            font-size: 1.1rem;
             margin-top: 40px;
             font-weight: 600;
+            letter-spacing: 2px;
             animation: bounce 2s infinite;
             text-align: center;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         /* SECTION 2: The Envelope */
@@ -169,10 +191,10 @@
             position: relative;
             width: 300px;
             height: 200px;
-            background: #e91e63;
+            background: #8b0032; /* Deepened the envelope color */
             border-radius: 0 0 10px 10px;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             transition: transform 0.3s ease;
             -webkit-tap-highlight-color: transparent;
         }
@@ -187,7 +209,7 @@
             height: 0;
             border-left: 150px solid transparent;
             border-right: 150px solid transparent;
-            border-top: 120px solid #d81b60;
+            border-top: 120px solid #a3003c;
             transform-origin: top;
             transition: transform 0.8s ease, z-index 0.2s;
             z-index: 4;
@@ -202,36 +224,38 @@
             padding: 20px;
             border-radius: 5px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
             opacity: 0; 
             transition: transform 0.8s ease, opacity 0.8s ease;
             z-index: 3;
             box-sizing: border-box;
+            color: #333;
         }
 
         .letter p {
-            font-size: 0.95rem;
-            color: #333;
+            font-size: 1rem;
             margin: 0;
-            font-weight: 400;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
         }
 
         .envelope-instruction {
             margin-top: 15px !important;
-            font-weight: 600 !important;
             color: #c2185b !important;
-            font-size: 1.05rem !important;
+            font-size: 1.1rem !important;
             animation: bounce 2s infinite;
         }
 
         .click-instruction {
             position: absolute;
-            bottom: -40px;
+            bottom: -50px;
             width: 100%;
             text-align: center;
-            color: #d81b60;
+            color: #fff;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
         }
 
         .envelope-container.open .flap {
@@ -247,13 +271,12 @@
 
         .envelope-container.open .click-instruction { opacity: 0; }
 
-        /* SECTION 3: Our Memories (Hidden Initially) */
+        /* SECTION 3: Our Memories */
         #memories-container {
             display: none; 
             width: 100%;
         }
 
-        /* 1 Memory = 1 Full Screen */
         .memory-viewport {
             height: 100vh;
             width: 100vw;
@@ -268,45 +291,48 @@
         .memory-card {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.5); /* Dark frosted glass for memories */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(255, 105, 135, 0.15);
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             max-width: 900px;
             width: 100%;
         }
 
         .memory-img {
-            width: 250px;
-            height: 250px;
+            width: 280px;
+            height: 280px;
             flex-shrink: 0;
             background-color: #ffb6c1; 
             border-radius: 15px;
             background-size: cover;
             background-position: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .memory-text {
-            padding-left: 40px;
+            padding-left: 50px;
             flex-grow: 1;
         }
 
         .memory-text h3 {
-            color: #d81b60;
-            font-size: 2rem;
+            color: #ffb6c1;
+            font-size: 2.5rem;
             margin: 0 0 15px 0;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
+            font-family: 'Great Vibes', cursive;
+            letter-spacing: 2px;
         }
 
         .memory-text p {
-            color: #444;
-            font-size: 1.15rem;
-            line-height: 1.6;
+            color: #eee;
+            font-size: 1.2rem;
+            line-height: 1.7;
             margin: 0;
+            font-style: italic;
         }
 
         /* Custom Popup Modal */
@@ -314,7 +340,7 @@
             display: none; 
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.8);
             backdrop-filter: blur(5px);
             z-index: 100;
             justify-content: center;
@@ -322,36 +348,41 @@
         }
 
         .modal-box {
-            background: white;
-            padding: 30px 20px;
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 20px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
             max-width: 85%;
             width: 320px;
         }
 
         .modal-box h2 {
-            color: #c2185b;
+            color: #ffb6c1;
             margin-top: 0;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .modal-btn {
-            background: #e91e63;
+            background: transparent;
             color: white;
-            border: none;
+            border: 1px solid #ffb6c1;
             padding: 12px 20px;
             margin: 10px 5px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 0.95rem;
-            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
             transition: 0.3s;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .modal-btn:hover, .modal-btn:active { background: #c2185b; }
+        .modal-btn:hover, .modal-btn:active { 
+            background: #ffb6c1; 
+            color: #000;
+        }
 
         /* Animations */
         @keyframes bounce {
@@ -362,10 +393,11 @@
         
         .bg-heart {
             position: fixed;
-            color: rgba(255, 182, 193, 0.6);
+            color: rgba(255, 182, 193, 0.4);
             z-index: 0;
             pointer-events: none;
             animation: floatUp linear infinite;
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
         }
 
         @keyframes floatUp {
@@ -374,35 +406,40 @@
         }
 
         /* 📱 MOBILE RESPONSIVENESS OVERRIDES */
-        @media (max-width: 768px) {
-            .top-bar { justify-content: center; padding: 15px; }
-            .center-display { flex-direction: column; gap: 20px; padding-top: 20px; }
+        @media (max-width: 850px) {
+            .glass-panel {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+            }
             .photo-heart { width: 160px; height: 160px; }
-            h1 { font-size: 3.5rem; }
-            .subtitle { font-size: 0.75rem; }
-            .main-desc { font-size: 0.95rem; padding: 0 10px; }
+            h1 { font-size: 4.5rem; }
+            .subtitle { font-size: 0.8rem; }
+            .main-desc { font-size: 1rem; padding: 0 10px; }
             
             .memory-viewport { padding: 15px; }
             .memory-card {
                 flex-direction: column;
                 text-align: center;
-                padding: 25px 20px;
+                padding: 30px 20px;
                 max-height: 90vh;
                 overflow-y: auto;
             }
             .memory-img { width: 200px; height: 200px; margin: 0 auto; }
             .memory-text { padding-left: 0; padding-top: 25px; }
-            .memory-text h3 { font-size: 1.6rem; }
-            .memory-text p { font-size: 1rem; }
+            .memory-text h3 { font-size: 2.2rem; }
+            .memory-text p { font-size: 1.05rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Main Background Music -->
     <audio id="bg-music" loop>
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- Individual Memory Songs -->
     <audio id="audio-memory1" class="memory-audio" loop><source src="song1.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory2" class="memory-audio" loop><source src="song2.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory3" class="memory-audio" loop><source src="song3.mp3" type="audio/mpeg"></audio>
@@ -418,9 +455,10 @@
         <button class="music-btn" id="music-toggle" onclick="toggleMusic()">🎵 Play Music</button>
     </div>
 
+    <!-- SECTION 1: Welcome Screen -->
     <div class="hero-section">
         
-        <div class="center-display">
+        <div class="glass-panel">
             <div class="photo-heart" style="background-image: url('photo1.jpeg'); background-position: center top; background-size: cover;"></div>
             
             <div class="text-content">
@@ -444,6 +482,7 @@
         </div>
     </div>
 
+    <!-- SECTION 2: Interactive Envelope -->
     <div class="envelope-section">
         <div class="envelope-container" id="envelope" onclick="openModal()">
             <div class="flap"></div>
@@ -457,6 +496,7 @@
         </div>
     </div>
 
+    <!-- SECTION 3: Our Memories -->
     <div id="memories-container">
 
         <div class="memory-viewport" data-audio="audio-memory1">
@@ -503,8 +543,8 @@
             <div class="memory-card">
                 <div class="memory-img" style="background-image: url('memory5.jpeg');"></div>
                 <div class="memory-text">
-                    <h3>Mandir</h3>
-                    <p> I always loved seeking blessings from god with you every Tuesday.</p>
+                    <h3>Title for Picture 5</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
                 </div>
             </div>
         </div>
@@ -513,8 +553,8 @@
             <div class="memory-card">
                 <div class="memory-img" style="background-image: url('memory6.jpeg');"></div>
                 <div class="memory-text">
-                    <h3>Your Kiss</h3>
-                    <p>Your kiss melts my heart like anything. Thank you for the unforgetable kisses.</p>
+                    <h3>Title for Picture 6</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
                 </div>
             </div>
         </div>
@@ -523,8 +563,8 @@
             <div class="memory-card">
                 <div class="memory-img" style="background-image: url('memory7.jpeg');"></div>
                 <div class="memory-text">
-                    <h3>Cuteness Overloaded</h3>
-                    <p> I always find this picture supercute. The way you smile the way you look at me.</p>
+                    <h3>Title for Picture 7</h3>
+                    <p>Replace this text with a beautiful memory or description associated with this picture.</p>
                 </div>
             </div>
         </div>
@@ -561,6 +601,7 @@
 
     </div>
 
+    <!-- The Popup Modal -->
     <div class="modal-overlay" id="questionModal">
         <div class="modal-box">
             <h2>Do you love me?</h2>
@@ -606,25 +647,21 @@
                 const memoryAudio = document.getElementById(audioId);
                 
                 if (entry.isIntersecting) {
-                    // Pause the main background music if it is playing
                     if (isMainPlaying) {
                         mainAudio.pause();
                         mainButton.innerHTML = '🎵 Play Music';
                         isMainPlaying = false;
                     }
-                    // Pause all other memory songs
                     document.querySelectorAll('.memory-audio').forEach(a => a.pause());
-                    // Play this memory's song
                     if(memoryAudio) {
-                        memoryAudio.currentTime = 0; // Start song from beginning
+                        memoryAudio.currentTime = 0; 
                         memoryAudio.play().catch(e => console.log("Autoplay blocked by browser."));
                     }
                 } else {
-                    // Pause song when scrolling away
                     if(memoryAudio) memoryAudio.pause();
                 }
             });
-        }, { threshold: 0.6 }); // Triggers when 60% of the memory takes up the screen
+        }, { threshold: 0.6 }); 
 
         // Envelope and Modal Logic
         const envelope = document.getElementById('envelope');
@@ -637,18 +674,15 @@
         }
 
         function openEnvelope() {
-            modal.style.display = 'none'; // Close modal
-            envelope.classList.add('open'); // Open envelope
+            modal.style.display = 'none'; 
+            envelope.classList.add('open'); 
 
-            // Silent trick to "unlock" all audio elements on mobile after click
             document.querySelectorAll('.memory-audio').forEach(a => {
                 a.play().then(() => a.pause()).catch(e => console.log("Audio unlock failed:", e));
             });
 
-            // Reveal the hidden memories section
             document.getElementById('memories-container').style.display = 'block';
 
-            // Start observing the memory screens to play their songs
             document.querySelectorAll('.memory-viewport').forEach(screen => {
                 memoryObserver.observe(screen);
             });
