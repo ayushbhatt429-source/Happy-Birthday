@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday My Love</title>
+    <!-- Beautiful fonts to match the scrapbook aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500&display=swap" rel="stylesheet">
     
     <style>
@@ -271,7 +272,7 @@
         /* NEW GALLERY SECTIONS                  */
         /* ------------------------------------- */
         .gallery-container {
-            background: #fffdfa; /* Warm paper white */
+            background: #fffdfa; 
             padding: 40px;
             border-radius: 12px;
             box-shadow: 2px 5px 25px rgba(0,0,0,0.08);
@@ -297,7 +298,6 @@
 
         .photo-card {
             position: relative;
-            /* 2-Second animation settings */
             opacity: 0;
             transform: scale(0.8) translateY(20px);
             transition: opacity 2s ease, transform 2s ease;
@@ -305,7 +305,7 @@
 
         .gallery-img-sq {
             width: 100%;
-            aspect-ratio: 1; /* Makes them perfectly square */
+            aspect-ratio: 1; 
             background-color: #e6d5c3;
             background-size: cover;
             background-position: center;
@@ -394,7 +394,7 @@
             .gallery-title { font-size: 3.5rem; }
             .gallery-footer { font-size: 1.8rem; margin-top: 25px; }
             .gallery-container { padding: 25px; }
-            .memory-viewport { height: auto; min-height: 100vh; padding: 40px 10px; } /* Allows gallery to scroll nicely on phone */
+            .memory-viewport { height: auto; min-height: 100vh; padding: 40px 10px; }
         }
 
         @media (max-width: 600px) {
@@ -404,13 +404,16 @@
 </head>
 <body>
 
+    <!-- Fixed Background Flowers -->
     <div class="fixed-flower-1">✿</div>
     <div class="fixed-flower-2">❀</div>
 
+    <!-- Invisible trigger screen to bypass browser audio blocks -->
     <div id="intro-screen" onclick="startExperience()">
         <p class="tap-text">Tap anywhere to open your surprise ❤️</p>
     </div>
 
+    <!-- AUDIO FILES -->
     <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory1" class="memory-audio" loop><source src="song1.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory2" class="memory-audio" loop><source src="song2.mp3" type="audio/mpeg"></audio>
@@ -425,6 +428,7 @@
     <audio id="audio-mygallery" class="memory-audio" loop><source src="song_mygallery.mp3" type="audio/mpeg"></audio>
     <audio id="audio-ourgallery" class="memory-audio" loop><source src="song_ourgallery.mp3" type="audio/mpeg"></audio>
 
+    <!-- SECTION 1: Welcome Screen -->
     <div class="hero-section" id="hero">
         <div class="scrapbook-row">
             <div class="photo-wrapper slow-image">
@@ -446,6 +450,7 @@
         </div>
     </div>
 
+    <!-- SECTION 2: Interactive Envelope -->
     <div class="envelope-section hidden-element" id="envelope-sec">
         <div class="envelope-container" id="envelope" onclick="openModal()">
             <div class="flap"></div>
@@ -457,8 +462,10 @@
         </div>
     </div>
 
+    <!-- SECTION 3: 10 Individual Memories & Galleries -->
     <div id="memories-container">
 
+        <!-- 10 MEMORIES -->
         <div class="memory-viewport" data-audio="audio-memory1">
             <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory1.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Your First Picture</h3><p class="letter-anim">The moment I saw this picture, my heart skipped a beat. Your smile completely captivated me, and looking back, I realize this was the exact moment I started falling endlessly in love with you.</p></div></div>
         </div>
@@ -490,12 +497,13 @@
             <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory10.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 10</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
 
+        <!-- NEW SECTION: MY GALLERY -->
         <div class="memory-viewport" data-audio="audio-mygallery">
             <div class="gallery-container hidden-element">
                 <div class="tape"></div>
-                <div class="gallery-header letter-anim">
-                    <h2 class="gallery-title">My Gallery</h2>
-                    <p class="gallery-subtitle">♡ — 15 memories, countless feelings. — ♡</p>
+                <div class="gallery-header">
+                    <h2 class="gallery-title letter-anim">My Gallery</h2>
+                    <p class="gallery-subtitle letter-anim">♡ — 15 memories, countless feelings. — ♡</p>
                 </div>
                 
                 <div class="gallery-grid">
@@ -527,12 +535,13 @@
             </div>
         </div>
 
+        <!-- NEW SECTION: OUR GALLERY -->
         <div class="memory-viewport" data-audio="audio-ourgallery">
             <div class="gallery-container hidden-element">
                 <div class="tape"></div>
-                <div class="gallery-header letter-anim">
-                    <h2 class="gallery-title">Our Gallery</h2>
-                    <p class="gallery-subtitle">♡ — A lifetime of moments together. — ♡</p>
+                <div class="gallery-header">
+                    <h2 class="gallery-title letter-anim">Our Gallery</h2>
+                    <p class="gallery-subtitle letter-anim">♡ — A lifetime of moments together. — ♡</p>
                 </div>
                 
                 <div class="gallery-grid">
@@ -566,6 +575,7 @@
 
     </div>
 
+    <!-- The Popup Modal -->
     <div class="modal-overlay" id="questionModal">
         <div class="modal-box">
             <h2>Do you love me?</h2>
@@ -650,7 +660,7 @@
                     galleryCards.forEach((card, index) => {
                         setTimeout(() => {
                             card.classList.add('show-element');
-                        }, index * 100); // 100ms stagger between each photo popping in
+                        }, index * 100); 
                     });
                 }
             });
@@ -658,7 +668,7 @@
 
         document.querySelectorAll('.hidden-element').forEach(el => scrollObserver.observe(el));
 
-        // 5. Audio Switching Logic (Handles Memories AND Galleries)
+        // 5. Audio Switching Logic
         const memoryObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const audioId = entry.target.getAttribute('data-audio');
@@ -678,7 +688,7 @@
                     if(memoryAudio) memoryAudio.pause();
                 }
             });
-        }, { threshold: 0.5 }); // Triggers when 50% of screen is reached
+        }, { threshold: 0.5 }); 
 
         // 6. Envelope Logic
         const envelope = document.getElementById('envelope');
