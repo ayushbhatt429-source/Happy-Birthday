@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday My Love</title>
+    <!-- Beautiful fonts to match the scrapbook aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500&display=swap" rel="stylesheet">
     
     <style>
@@ -56,13 +57,12 @@
         .floral-stamp {
             position: absolute;
             font-family: 'Playfair Display', serif;
-            opacity: 0.25; /* Soft, faded look */
-            z-index: 1; /* Stays behind everything */
+            opacity: 0.25; 
+            z-index: 1; 
             pointer-events: none;
             user-select: none;
         }
 
-        /* A few fixed massive flowers on the sides of the screen */
         .fixed-flower-1 {
             position: fixed; top: -5%; left: -5%; font-size: 25vw; color: #c97a7e; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(15deg);
         }
@@ -88,6 +88,7 @@
         .show-element {
             opacity: 1 !important;
             transform: translateY(0) !important;
+            transform: scale(1) !important;
         }
 
         .letter-anim span {
@@ -287,7 +288,7 @@
         .envelope-container.open .click-instruction { opacity: 0; }
 
         /* ------------------------------------- */
-        /* MEMORIES SECTION                      */
+        /* MEMORIES & GALLERY VIEWPORTS          */
         /* ------------------------------------- */
         #memories-container { display: none; width: 100%; }
 
@@ -300,7 +301,7 @@
             position: relative;
             padding: 20px;
             box-sizing: border-box;
-            overflow: hidden; /* Keeps flowers inside */
+            overflow: hidden;
         }
 
         .memory-card {
@@ -313,7 +314,7 @@
             max-width: 900px;
             width: 100%;
             position: relative;
-            z-index: 10; /* Keeps card above flowers */
+            z-index: 10;
         }
 
         .memory-img {
@@ -344,6 +345,57 @@
             font-size: 1.1rem;
             line-height: 1.7;
             margin: 0;
+        }
+
+        /* ------------------------------------- */
+        /* NEW GALLERY SECTIONS                  */
+        /* ------------------------------------- */
+        .gallery-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 2px 5px 20px rgba(0,0,0,0.08);
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 90vh; /* Keeps it neatly inside the screen */
+        }
+
+        .gallery-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #c97a7e;
+            margin: 0 0 15px 0;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            width: 100%;
+            overflow-y: auto; 
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .gallery-img {
+            width: 100%;
+            aspect-ratio: 1; /* Makes photos perfect squares */
+            background-color: #e6d5c3;
+            background-size: cover;
+            background-position: center;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 2px;
+            /* 2-Second animation */
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            transition: opacity 2s ease, transform 2s ease; 
         }
 
         /* ------------------------------------- */
@@ -406,19 +458,28 @@
             .memory-img { width: 220px; height: 220px; margin: 0 auto; transform: rotate(0deg); }
             .memory-text { padding-left: 0; padding-top: 25px; }
             .memory-text h3 { font-size: 2.8rem; }
+
+            /* Gallery adjustments for phone */
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .gallery-title { font-size: 3rem; }
+            .gallery-container { height: 92vh; padding: 15px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Fixed Background Flowers -->
     <div class="fixed-flower-1">✿</div>
     <div class="fixed-flower-2">❀</div>
 
+    <!-- Invisible trigger screen to bypass browser audio blocks -->
     <div id="intro-screen" onclick="startExperience()">
         <p class="tap-text">Tap anywhere to open your surprise ❤️</p>
     </div>
 
+    <!-- AUDIO FILES -->
     <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
+    <!-- 10 Individual Memory Songs -->
     <audio id="audio-memory1" class="memory-audio" loop><source src="song1.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory2" class="memory-audio" loop><source src="song2.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory3" class="memory-audio" loop><source src="song3.mp3" type="audio/mpeg"></audio>
@@ -429,11 +490,11 @@
     <audio id="audio-memory8" class="memory-audio" loop><source src="song8.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory9" class="memory-audio" loop><source src="song9.mp3" type="audio/mpeg"></audio>
     <audio id="audio-memory10" class="memory-audio" loop><source src="song10.mp3" type="audio/mpeg"></audio>
-    <audio id="audio-memory11" class="memory-audio" loop><source src="song11.mp3" type="audio/mpeg"></audio>
-    <audio id="audio-memory12" class="memory-audio" loop><source src="song12.mp3" type="audio/mpeg"></audio>
-    <audio id="audio-memory13" class="memory-audio" loop><source src="song13.mp3" type="audio/mpeg"></audio>
-    <audio id="audio-memory14" class="memory-audio" loop><source src="song14.mp3" type="audio/mpeg"></audio>
+    <!-- 2 New Gallery Songs -->
+    <audio id="audio-mygallery" class="memory-audio" loop><source src="song_mygallery.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-ourgallery" class="memory-audio" loop><source src="song_ourgallery.mp3" type="audio/mpeg"></audio>
 
+    <!-- SECTION 1: Welcome Screen -->
     <div class="hero-section" id="hero">
         <div class="scrapbook-row">
             
@@ -459,6 +520,7 @@
         </div>
     </div>
 
+    <!-- SECTION 2: Interactive Envelope -->
     <div class="envelope-section hidden-element" id="envelope-sec">
         <div class="envelope-container" id="envelope" onclick="openModal()">
             <div class="flap"></div>
@@ -470,8 +532,10 @@
         </div>
     </div>
 
+    <!-- SECTION 3: 10 Memories & Galleries -->
     <div id="memories-container">
 
+        <!-- 10 Memories -->
         <div class="memory-viewport" data-audio="audio-memory1">
             <div class="memory-card hidden-element">
                 <div class="tape"></div>
@@ -534,21 +598,60 @@
         <div class="memory-viewport" data-audio="audio-memory10">
             <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory10.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 10</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
         </div>
-        <div class="memory-viewport" data-audio="audio-memory11">
-            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory11.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 11</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
+
+        <!-- NEW SECTION: My Gallery -->
+        <div class="memory-viewport" data-audio="audio-mygallery">
+            <div class="gallery-container hidden-element">
+                <div class="tape"></div>
+                <h2 class="gallery-title letter-anim">My Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-img" style="background-image: url('mygal1.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal2.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal3.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal4.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal5.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal6.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal7.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal8.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal9.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal10.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal11.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal12.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal13.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal14.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('mygal15.jpeg');"></div>
+                </div>
+            </div>
         </div>
-        <div class="memory-viewport" data-audio="audio-memory12">
-            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory12.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 12</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
-        </div>
-        <div class="memory-viewport" data-audio="audio-memory13">
-            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory13.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 13</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
-        </div>
-        <div class="memory-viewport" data-audio="audio-memory14">
-            <div class="memory-card hidden-element"><div class="tape"></div><div class="memory-img slow-image" style="background-image: url('memory14.jpeg');"></div><div class="memory-text"><h3 class="letter-anim">Memory 14</h3><p class="letter-anim">Your beautiful description goes right here.</p></div></div>
+
+        <!-- NEW SECTION: Our Gallery -->
+        <div class="memory-viewport" data-audio="audio-ourgallery">
+            <div class="gallery-container hidden-element">
+                <div class="tape"></div>
+                <h2 class="gallery-title letter-anim">Our Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-img" style="background-image: url('ourgal1.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal2.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal3.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal4.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal5.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal6.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal7.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal8.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal9.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal10.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal11.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal12.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal13.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal14.jpeg');"></div>
+                    <div class="gallery-img" style="background-image: url('ourgal15.jpeg');"></div>
+                </div>
+            </div>
         </div>
 
     </div>
 
+    <!-- The Popup Modal -->
     <div class="modal-overlay" id="questionModal">
         <div class="modal-box">
             <h2>Do you love me?</h2>
@@ -559,7 +662,6 @@
 
     <script>
         // 1. Generate Organic Background Flowers
-        // This script scatters soft, line-art floral elements everywhere to make the page look fully filled.
         const decorSymbols = ['❀', '✿', '❁', '✾', '🌿', '🍃', '🌾', '🍂'];
         const colors = ['#e9bda5', '#c97a7e', '#d4a373', '#dcbfa6'];
         
@@ -579,22 +681,15 @@
             }
         }
         
-        // Fill hero and envelope sections with background decor
         addDecor(document.getElementById('hero'), 8);
         addDecor(document.getElementById('envelope-sec'), 6);
-
-        // Fill EVERY memory viewport with 4 random floral stamps
-        document.querySelectorAll('.memory-viewport').forEach(viewport => {
-            addDecor(viewport, 4);
-        });
-
+        document.querySelectorAll('.memory-viewport').forEach(viewport => addDecor(viewport, 4));
 
         // 2. Prepare Letter-by-Letter Animation Logic for EXACTLY 10 seconds
         document.querySelectorAll('.letter-anim').forEach(el => {
             let text = el.innerText;
             let len = text.length;
             
-            // Forces the complete animation sequence to stretch out over exactly 10 seconds
             let totalDuration = 10; 
             let delayPerChar = totalDuration / (len || 1); 
 
@@ -628,18 +723,28 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show-element');
                     
+                    // Trigger slow image fades
                     const slowImages = entry.target.querySelectorAll('.slow-image');
                     slowImages.forEach(img => img.classList.add('show-element'));
 
+                    // Trigger letter animations
                     const textAnim = entry.target.querySelectorAll('.letter-anim');
                     textAnim.forEach(t => t.classList.add('start'));
+
+                    // Trigger New Gallery 2-second animations with a beautiful staggered delay
+                    const galleryImages = entry.target.querySelectorAll('.gallery-img');
+                    galleryImages.forEach((img, index) => {
+                        setTimeout(() => {
+                            img.classList.add('show-element');
+                        }, index * 100); // 100ms stagger between each photo popping in
+                    });
                 }
             });
         }, { threshold: 0.2 });
 
         document.querySelectorAll('.hidden-element').forEach(el => scrollObserver.observe(el));
 
-        // 5. Memory Audio Switching Logic
+        // 5. Memory & Gallery Audio Switching Logic
         const memoryObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const audioId = entry.target.getAttribute('data-audio');
