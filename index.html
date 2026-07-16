@@ -9,136 +9,49 @@
     <style>
         /* Base page styling - Warm Scrapbook Aesthetic */
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #f6efe8; 
+            margin: 0; padding: 0; background-color: #f6efe8; 
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            font-family: 'Playfair Display', serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            color: #5c4a3d; 
-            position: relative;
+            font-family: 'Playfair Display', serif; overflow-x: hidden; scroll-behavior: smooth; color: #5c4a3d; position: relative;
         }
 
         /* ------------------------------------- */
         /* INTRO SCREEN                          */
         /* ------------------------------------- */
         #intro-screen {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #f6efe8;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: opacity 1s ease;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #f6efe8; z-index: 1000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer; transition: opacity 1s ease;
         }
-
-        .tap-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            color: #8c6a58;
-            animation: pulse 2s infinite alternate;
-            text-align: center;
-            padding: 20px;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
+        .tap-text { font-family: 'Great Vibes', cursive; font-size: 3rem; color: #8c6a58; animation: pulse 2s infinite alternate; text-align: center; padding: 20px; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.05); opacity: 1; } }
 
         /* ------------------------------------- */
         /* FLORAL STAMPS & DECORATIONS           */
         /* ------------------------------------- */
-        .floral-stamp {
-            position: absolute;
-            font-family: 'Playfair Display', serif;
-            opacity: 0.25; 
-            z-index: 1; 
-            pointer-events: none;
-            user-select: none;
-        }
-
+        .floral-stamp { position: absolute; font-family: 'Playfair Display', serif; opacity: 0.25; z-index: 1; pointer-events: none; user-select: none; }
         .fixed-flower-1 { position: fixed; top: -5%; left: -5%; font-size: 25vw; color: #c97a7e; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(15deg); }
         .fixed-flower-2 { position: fixed; bottom: -5%; right: -5%; font-size: 20vw; color: #d4a373; opacity: 0.15; z-index: 0; pointer-events: none; transform: rotate(-25deg); }
 
         /* ------------------------------------- */
         /* FAIL-PROOF CSS ANIMATIONS             */
         /* ------------------------------------- */
-        .hidden-element {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.5s ease, transform 1.5s ease;
-        }
-
-        .show-element {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        .slow-image {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 5.5s ease-in-out, transform 5.5s ease-in-out;
-        }
-
-        /* Pure CSS Letter Animation Engine */
-        .letter-anim span {
-            opacity: 0;
-            display: inline-block;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        /* When parent gets show-element, trigger the spans */
-        .show-element .letter-anim span, 
-        .show-element.letter-anim span {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .hidden-element { opacity: 0; transform: translateY(30px); transition: opacity 1.5s ease, transform 1.5s ease; }
+        .show-element { opacity: 1 !important; transform: translateY(0) !important; }
+        .slow-image { opacity: 0; transform: translateY(40px); transition: opacity 5.5s ease-in-out, transform 5.5s ease-in-out; }
+        .letter-anim span { opacity: 0; display: inline-block; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .show-element .letter-anim span, .show-element.letter-anim span, .start span { opacity: 1; transform: translateY(0); }
 
         /* ------------------------------------- */
         /* SCRAPBOOK DESIGN ELEMENTS             */
         /* ------------------------------------- */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 10;
-            padding: 50px 20px;
-        }
-
-        .scrapbook-row {
-            display: flex; flex-direction: row; align-items: center; justify-content: center;
-            gap: 40px; width: 100%; max-width: 1200px; position: relative; z-index: 10;
-        }
-
-        .photo-wrapper {
-            position: relative; background: #fff; padding: 15px; box-shadow: 2px 5px 15px rgba(0,0,0,0.1); transform: rotate(-2deg);
-        }
+        .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 10; padding: 50px 20px; }
+        .scrapbook-row { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 40px; width: 100%; max-width: 1200px; position: relative; z-index: 10; }
+        .photo-wrapper { position: relative; background: #fff; padding: 15px; box-shadow: 2px 5px 15px rgba(0,0,0,0.1); transform: rotate(-2deg); }
         .photo-wrapper.right { transform: rotate(3deg); }
-
-        .tape {
-            position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-3deg);
-            width: 100px; height: 35px; background-color: rgba(230, 220, 190, 0.85); box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 5;
-        }
-
-        .photo-heart {
-            width: 250px; height: 250px; background-color: #dcbfa6; background-repeat: no-repeat;
-            -webkit-mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-            -webkit-mask-size: 100%; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;
-        }
-
+        .tape { position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 100px; height: 35px; background-color: rgba(230, 220, 190, 0.85); box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 5; }
+        .photo-heart { width: 250px; height: 250px; background-color: #dcbfa6; background-repeat: no-repeat; -webkit-mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E"); -webkit-mask-size: 100%; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; }
         .doodle-text { font-family: 'Caveat', cursive; font-size: 2rem; color: #8b6b55; position: absolute; transform: rotate(-10deg); }
         .doodle-1 { right: -60px; top: 80%; }
         .doodle-2 { left: -80px; bottom: 20%; transform: rotate(15deg); }
-
         .text-content { text-align: center; max-width: 500px; margin: 40px 0; padding: 0 20px; }
         .subtitle { font-size: 0.9rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 600; color: #8c6a58; margin-bottom: 0px; }
         h1 { font-family: 'Great Vibes', cursive; color: #6a4a3a; font-size: 6rem; margin: 0; line-height: 1.1; }
@@ -163,7 +76,6 @@
         /* INDIVIDUAL MEMORIES                   */
         /* ------------------------------------- */
         #memories-container { display: none; width: 100%; }
-
         .memory-viewport { height: auto; min-height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; padding: 50px 20px; box-sizing: border-box; }
         .memory-card { display: flex; align-items: center; background: #fff; padding: 30px; border-radius: 5px; box-shadow: 2px 5px 20px rgba(0,0,0,0.08); max-width: 900px; width: 100%; position: relative; z-index: 10; }
         .memory-img { width: 280px; height: 280px; flex-shrink: 0; background-color: #e6d5c3; background-size: cover; background-position: center top; border: 8px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transform: rotate(-3deg); }
@@ -171,79 +83,44 @@
         .memory-text h3 { color: #c97a7e; font-size: 4rem; margin: 0; font-family: 'Great Vibes', cursive; }
 
         /* ------------------------------------- */
-        /* GALLERY SECTIONS (STRICT LAPTOP FIX)  */
+        /* GALLERY & QUIZ CONTAINERS             */
         /* ------------------------------------- */
         .gallery-container {
-            background: #fffdfa; 
-            padding: 4vh 3vw;
-            border-radius: 12px; 
-            box-shadow: 2px 5px 25px rgba(0,0,0,0.08);
-            
-            /* The fix: This forces the box width to shrink based on the screen's height, preventing overflow! */
-            max-width: 100vh; 
-            width: 95%; 
-            position: relative; 
-            z-index: 10; 
-            
-            display: flex; 
-            flex-direction: column; 
-            align-items: center;
-            justify-content: center;
-            gap: 2vh; /* Smooth spacing that shrinks on smaller screens */
-            box-sizing: border-box;
+            background: #fffdfa; padding: 4vh 3vw; border-radius: 12px; box-shadow: 2px 5px 25px rgba(0,0,0,0.08);
+            max-width: 100vh; width: 95%; position: relative; z-index: 10; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; gap: 2vh; box-sizing: border-box;
         }
-
         .gallery-header { text-align: center; width: 100%; }
         .gallery-title { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 6vh, 5rem); color: #d27b7f; margin: 0; line-height: 1; }
         .gallery-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(0.9rem, 2vh, 1.5rem); color: #8c6a58; margin-top: 1vh; font-style: italic; margin-bottom: 0; }
         
-        .gallery-grid { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 1.5vh; 
-            width: 100%; 
-        }
-
-        .photo-card {
-            position: relative;
-            opacity: 0;
-            transform: scale(0.8) translateY(20px);
-            transition: opacity 2s ease, transform 2s ease;
-        }
-
-        .play-gallery .photo-card {
-            opacity: 1 !important;
-            transform: scale(1) translateY(0) !important;
-        }
-
-        .gallery-img-sq { 
-            width: 100%; 
-            aspect-ratio: 1; 
-            background-color: #e6d5c3; 
-            background-size: cover; 
-            background-position: center; 
-            border-radius: 1vh; 
-            box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.1); 
-        }
-        
-        .photo-badge { 
-            position: absolute; bottom: -1vh; left: -1vh; background: #e5989b; color: #fff; 
-            width: 3.5vh; height: 3.5vh; display: flex; align-items: center; justify-content: center; 
-            border-radius: 50%; font-family: 'Playfair Display', serif; font-weight: bold; font-size: 1.5vh; 
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.2); border: 0.3vh solid #fff; z-index: 2; 
-        }
-
+        .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5vh; width: 100%; }
+        .photo-card { position: relative; opacity: 0; transform: scale(0.8) translateY(20px); transition: opacity 2s ease, transform 2s ease; }
+        .play-gallery .photo-card { opacity: 1 !important; transform: scale(1) translateY(0) !important; }
+        .gallery-img-sq { width: 100%; aspect-ratio: 1; background-color: #e6d5c3; background-size: cover; background-position: center; border-radius: 1vh; box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.1); }
+        .photo-badge { position: absolute; bottom: -1vh; left: -1vh; background: #e5989b; color: #fff; width: 3.5vh; height: 3.5vh; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-family: 'Playfair Display', serif; font-weight: bold; font-size: 1.5vh; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); border: 0.3vh solid #fff; z-index: 2; }
         .special-card .gallery-img-sq { border: 0.4vh solid #d4af37; box-shadow: 0 0 2vh rgba(212, 175, 55, 0.4); }
         .special-card .photo-badge { background: #d4af37; }
         .crown-icon { position: absolute; top: -2vh; right: -1vh; font-size: 3vh; transform: rotate(15deg); z-index: 2; }
-
-        .gallery-footer { 
-            text-align: center; font-family: 'Great Vibes', cursive; 
-            font-size: clamp(1.5rem, 3.5vh, 2.5rem); color: #d27b7f; line-height: 1.2; width: 100%; margin: 0;
-        }
+        .gallery-footer { text-align: center; font-family: 'Great Vibes', cursive; font-size: clamp(1.5rem, 3.5vh, 2.5rem); color: #d27b7f; line-height: 1.2; width: 100%; margin: 0; }
 
         /* ------------------------------------- */
-        /* MODAL                                 */
+        /* QUIZ & SURPRISE STYLING               */
+        /* ------------------------------------- */
+        #quiz-box { width: 100%; min-height: 250px; position: relative; margin-top: 20px; }
+        .question-slide { width: 100%; text-align: center; }
+        .quiz-question { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #c97a7e; margin-bottom: 30px; }
+        .quiz-btns { display: flex; justify-content: center; gap: 20px; position: relative; height: 100px; align-items: center; width: 100%; }
+        .quiz-btn { background: #fff; color: #8c6a58; border: 2px solid #e5989b; padding: 12px 35px; border-radius: 30px; cursor: pointer; font-size: 1.5rem; font-family: 'Playfair Display', serif; transition: 0.3s; font-weight: bold; }
+        .quiz-btn:hover { background: #e5989b; color: #fff; }
+        .no-btn { transition: top 0.2s ease, left 0.2s ease; z-index: 50; }
+
+        .surprise-img-wrapper { width: 100%; max-width: 500px; aspect-ratio: 1; border: 10px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius: 5px; margin: 20px auto; transform: rotate(-2deg); }
+        .surprise-img { width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 5s ease-in-out; }
+        .show-surprise .surprise-img { opacity: 1; }
+
+        /* ------------------------------------- */
+        /* MODAL & RESPONSIVE                    */
         /* ------------------------------------- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(246, 239, 232, 0.9); z-index: 100; justify-content: center; align-items: center; }
         .modal-box { background: #fff; padding: 40px; border-radius: 5px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 85%; width: 320px; border: 1px solid #e6d5c3; }
@@ -251,9 +128,6 @@
         .modal-btn { background: transparent; color: #8c6a58; border: 1px solid #8c6a58; padding: 12px 20px; margin: 10px 5px; border-radius: 30px; cursor: pointer; font-size: 1rem; font-family: 'Playfair Display', serif; transition: 0.3s; }
         .modal-btn:hover { background: #8c6a58; color: #fff; }
 
-        /* ------------------------------------- */
-        /* MOBILE RESPONSIVENESS                 */
-        /* ------------------------------------- */
         @media (max-width: 950px) {
             .scrapbook-row { flex-direction: column; gap: 50px; }
             h1 { font-size: 4.5rem; }
@@ -261,15 +135,14 @@
             .photo-heart { width: 200px; height: 200px; }
             .doodle-1 { right: -10px; font-size: 1.5rem; }
             .doodle-2 { left: 0px; font-size: 1.5rem; }
-            
             .memory-card { flex-direction: column; text-align: center; padding: 25px 20px; }
             .memory-img { width: 220px; height: 220px; margin: 0 auto; transform: rotate(0deg); }
             .memory-text { padding-left: 0; padding-top: 25px; }
             .memory-text h3 { font-size: 3.5rem; }
-
             .gallery-container { padding: 3vh 3vw; max-width: 100vw; }
             .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5vw; }
             .photo-badge { width: 2.5vh; height: 2.5vh; font-size: 1.2vh; border-width: 0.2vh; bottom: -0.5vh; left: -0.5vh; }
+            .quiz-question { font-size: 2.5rem; }
         }
         @media (max-width: 600px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 2vw; }
@@ -298,6 +171,7 @@
     <audio id="audio-memory10" class="memory-audio" loop><source src="song10.mp3" type="audio/mpeg"></audio>
     <audio id="audio-mygallery" class="memory-audio" loop><source src="song_mygallery.mp3" type="audio/mpeg"></audio>
     <audio id="audio-ourgallery" class="memory-audio" loop><source src="song_ourgallery.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-surprise" class="memory-audio" loop><source src="song_surprise.mp3" type="audio/mpeg"></audio>
 
     <div class="hero-section" id="hero">
         <div class="scrapbook-row">
@@ -387,12 +261,7 @@
                     <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal12.jpeg');"></div><div class="photo-badge">12</div></div>
                     <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal13.jpeg');"></div><div class="photo-badge">13</div></div>
                     <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('mygal14.jpeg');"></div><div class="photo-badge">14</div></div>
-                    
-                    <div class="photo-card special-card">
-                        <div class="crown-icon">👑</div>
-                        <div class="gallery-img-sq" style="background-image: url('mygal15.jpeg');"></div>
-                        <div class="photo-badge">15</div>
-                    </div>
+                    <div class="photo-card special-card"><div class="crown-icon">👑</div><div class="gallery-img-sq" style="background-image: url('mygal15.jpeg');"></div><div class="photo-badge">15</div></div>
                 </div>
 
                 <div class="gallery-footer letter-anim" data-duration="2">
@@ -424,16 +293,60 @@
                     <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal12.jpeg');"></div><div class="photo-badge">12</div></div>
                     <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal13.jpeg');"></div><div class="photo-badge">13</div></div>
                     <div class="photo-card"><div class="gallery-img-sq" style="background-image: url('ourgal14.jpeg');"></div><div class="photo-badge">14</div></div>
-                    
-                    <div class="photo-card special-card">
-                        <div class="crown-icon">👑</div>
-                        <div class="gallery-img-sq" style="background-image: url('ourgal15.jpeg');"></div>
-                        <div class="photo-badge">15</div>
-                    </div>
+                    <div class="photo-card special-card"><div class="crown-icon">👑</div><div class="gallery-img-sq" style="background-image: url('ourgal15.jpeg');"></div><div class="photo-badge">15</div></div>
                 </div>
 
                 <div class="gallery-footer letter-anim" data-duration="2">
                     Every picture tells a story,<br>but you are my favorite chapter.
+                </div>
+            </div>
+        </div>
+
+        <div class="memory-viewport" id="quiz-section">
+            <div class="gallery-container hidden-element" style="max-width: 800px; padding: 50px;">
+                <div class="tape"></div>
+                <div class="gallery-header">
+                    <h2 class="gallery-title letter-anim" data-duration="2">Wait, one more thing...</h2>
+                    <p class="gallery-subtitle letter-anim" data-duration="2" style="font-size: 1.5rem; margin-top: 20px;">This is not the end. Answer the following questions to skip to the last part.</p>
+                </div>
+                
+                <div id="quiz-box">
+                    <div id="q1" class="question-slide">
+                        <h3 class="quiz-question">1) Gussa kum karogi?</h3>
+                        <div class="quiz-btns">
+                            <button class="quiz-btn yes-btn" onclick="nextQ(1)">Yes</button>
+                            <button class="quiz-btn no-btn" onmouseover="dodge(null, this)" ontouchstart="dodge(event, this)">No</button>
+                        </div>
+                    </div>
+                    
+                    <div id="q2" class="question-slide" style="display: none;">
+                        <h3 class="quiz-question">2) Mere saath saath apna bhi khyal rakhogi?</h3>
+                        <div class="quiz-btns">
+                            <button class="quiz-btn yes-btn" onclick="nextQ(2)">Yes</button>
+                            <button class="quiz-btn no-btn" onmouseover="dodge(null, this)" ontouchstart="dodge(event, this)">No</button>
+                        </div>
+                    </div>
+                    
+                    <div id="q3" class="question-slide" style="display: none;">
+                        <h3 class="quiz-question">3) Will you be my forever?</h3>
+                        <div class="quiz-btns">
+                            <button class="quiz-btn yes-btn" onclick="showSurprise()">Yes</button>
+                            <button class="quiz-btn no-btn" onmouseover="dodge(null, this)" ontouchstart="dodge(event, this)">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="memory-viewport" id="surprise-section" data-audio="audio-surprise" style="display: none;">
+            <div class="gallery-container">
+                <div class="tape"></div>
+                <div class="gallery-header">
+                    <h2 class="gallery-title">Here is your surprise!</h2>
+                    <p class="gallery-subtitle">♡ — I love you. — ♡</p>
+                </div>
+                <div class="surprise-img-wrapper">
+                    <div class="surprise-img" style="background-image: url('surprise.jpeg');"></div>
                 </div>
             </div>
         </div>
@@ -490,7 +403,7 @@
             });
         });
 
-        // 3. Prepare exactly 3-second staggered delays for Gallery Photos
+        // 3. Prepare exactly 2-second staggered delays for Gallery Photos (Total 30s)
         document.querySelectorAll('.gallery-grid').forEach(grid => {
             const cards = grid.querySelectorAll('.photo-card');
             cards.forEach((card, index) => {
@@ -498,7 +411,7 @@
             });
         });
 
-        // 4. Start Experience 
+        // 4. Start Experience
         const mainAudio = document.getElementById('bg-music');
         let isMainPlaying = false;
 
@@ -511,15 +424,11 @@
 
             const hero = document.getElementById('hero');
             hero.classList.add('show-element');
-            
-            // Forces the two heart images to fade in!
             hero.querySelectorAll('.slow-image').forEach(img => img.classList.add('show-element'));
-            
-            // Triggers the hero text to animate!
             hero.querySelectorAll('.letter-anim').forEach(t => t.classList.add('start'));
         }
 
-        // 5. Scroll Animations (Triggers strictly ONCE when section is reached)
+        // 5. Scroll Animations
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -567,11 +476,7 @@
         const envelope = document.getElementById('envelope');
         const modal = document.getElementById('questionModal');
 
-        function openModal() {
-            if (!envelope.classList.contains('open')) {
-                modal.style.display = 'flex';
-            }
-        }
+        function openModal() { if (!envelope.classList.contains('open')) { modal.style.display = 'flex'; } }
 
         function openEnvelope() {
             modal.style.display = 'none'; 
@@ -586,9 +491,33 @@
             document.querySelectorAll('.memory-card, .gallery-container').forEach(el => scrollObserver.observe(el));
             document.querySelectorAll('.memory-viewport').forEach(screen => memoryObserver.observe(screen));
 
+            setTimeout(() => { envelope.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 500);
+        }
+
+        // 8. Quiz Logic
+        function dodge(event, btn) {
+            if(event) event.preventDefault();
+            btn.style.position = 'absolute';
+            let newTop = Math.floor(Math.random() * 70) + 10;
+            let newLeft = Math.floor(Math.random() * 70) + 10;
+            btn.style.top = newTop + '%';
+            btn.style.left = newLeft + '%';
+        }
+
+        function nextQ(currentNum) {
+            document.getElementById('q' + currentNum).style.display = 'none';
+            document.getElementById('q' + (currentNum + 1)).style.display = 'block';
+        }
+
+        function showSurprise() {
+            document.getElementById('quiz-section').style.display = 'none';
+            const surpriseSec = document.getElementById('surprise-section');
+            surpriseSec.style.display = 'flex';
+            memoryObserver.observe(surpriseSec);
             setTimeout(() => {
-                envelope.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 500);
+                surpriseSec.classList.add('show-surprise');
+                surpriseSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
         }
     </script>
 </body>
