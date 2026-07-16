@@ -116,7 +116,9 @@
         .no-btn { transition: top 0.2s ease, left 0.2s ease; z-index: 50; }
 
         .surprise-img-wrapper { width: 100%; max-width: 500px; aspect-ratio: 1; border: 10px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius: 5px; margin: 20px auto; transform: rotate(-2deg); }
-        .surprise-img { width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 5s ease-in-out; }
+        
+        /* FIXED: background-position changed to "center top" so the upper part of the image is shown */
+        .surprise-img { width: 100%; height: 100%; background-size: cover; background-position: center top; opacity: 0; transition: opacity 5s ease-in-out; }
         .show-surprise .surprise-img { opacity: 1; }
 
         /* ------------------------------------- */
@@ -171,7 +173,8 @@
     <audio id="audio-memory10" class="memory-audio" loop><source src="song10.mp3" type="audio/mpeg"></audio>
     <audio id="audio-mygallery" class="memory-audio" loop><source src="song_mygallery.mp3" type="audio/mpeg"></audio>
     <audio id="audio-ourgallery" class="memory-audio" loop><source src="song_ourgallery.mp3" type="audio/mpeg"></audio>
-    <audio id="audio-surprise" class="memory-audio" loop><source src="song_surprise.mp3" type="audio/mpeg"></audio>
+    
+    <audio id="audio-surprise" class="memory-audio" loop><source src="song_surprise.mp3.mpeg" type="audio/mpeg"></audio>
 
     <div class="hero-section" id="hero">
         <div class="scrapbook-row">
@@ -513,6 +516,19 @@
             document.getElementById('quiz-section').style.display = 'none';
             const surpriseSec = document.getElementById('surprise-section');
             surpriseSec.style.display = 'flex';
+            
+            // FIXED: Forcibly stop all other music and play the surprise song instantly
+            if (isMainPlaying) {
+                mainAudio.pause();
+                isMainPlaying = false;
+            }
+            document.querySelectorAll('.memory-audio').forEach(a => a.pause());
+            const surpriseAudio = document.getElementById('audio-surprise');
+            if(surpriseAudio) {
+                surpriseAudio.currentTime = 0; 
+                surpriseAudio.play().catch(e => console.log("Surprise audio blocked.", e));
+            }
+
             memoryObserver.observe(surpriseSec);
             setTimeout(() => {
                 surpriseSec.classList.add('show-surprise');
